@@ -2,7 +2,7 @@
 
 
 --Dropper eksisterende tabeller
-drop table Billetter, Forestillinger, Person, Teaterstykke, Akt, Sal, Kulisser, Stol, Rolle, Skuespiller, Kundeprofil, BillettType, Oppgaver, Ansatt, HarOppgave,
+drop table if exists Billetter, Forestillinger, Person, Teaterstykke, Akt, Sal, Kulisser, Stol, Rolle, Skuespiller, Kundeprofil, BillettType, Oppgaver, Ansatt, HarOppgave,
 AnsattSom, HarAkt, Deltar, HarStol, ForestillingI, HarForestilling, TilForestilling, HarKulisser, HarRolle, DeltarIAkt, BillettKjoep, Typene, HarSete, HarTeaterstykke, 
 PersonSkuespiller;
 
