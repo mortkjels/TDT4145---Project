@@ -25,8 +25,8 @@ CREATE TABLE Billetter (
 --Oppretter Forestillinger-tabell
 CREATE TABLE Forestillinger (
     FID INTEGER,
-    Dato INTEGER,
-    Klokkeslett INTEGER,
+    Dato DATE,
+    Klokkeslett TIME,
     BID INTEGER,
     constraint FID_pk primary key (FID),
     constraint billett_fk foreign key (BID) references Billetter(BID)
