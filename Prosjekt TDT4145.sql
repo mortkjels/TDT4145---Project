@@ -1,5 +1,5 @@
 --SQL Script, Gruppe 27, Prosjekt TDT4145 VÅR 2024: Ole Marcus Aarnes, Morten Kjelsrud, Benjamin Færestrand
---Halla
+
 
 --Dropper eksisterende tabeller
 drop table Billetter;
