@@ -2,35 +2,8 @@
 
 
 --Dropper eksisterende tabeller
-drop table Billetter,
-Forestillinger,
-Person,
-Teaterstykke,
-Akt,
-Sal,
-Kulisser,
-Stol,
-Rolle,
-Skuespiller,
-Kundeprofil,
-BillettType,
-Oppgaver,
-Ansatt,
-HarOppgave,
-AnsattSom,
-HarAkt,
-Deltar,
-HarStol,
-ForestillingI,
-HarForestilling,
-TilForestilling,
-HarKulisser,
-HarRolle,
-DeltarIAkt,
-BillettKjøp,
-Typene,
-HarSete,
-HarTeaterstykke,
+drop table Billetter, Forestillinger, Person, Teaterstykke, Akt, Sal, Kulisser, Stol, Rolle, Skuespiller, Kundeprofil, BillettType, Oppgaver, Ansatt, HarOppgave,
+AnsattSom, HarAkt, Deltar, HarStol, ForestillingI, HarForestilling, TilForestilling, HarKulisser, HarRolle, DeltarIAkt, BillettKjoep, Typene, HarSete, HarTeaterstykke, 
 PersonSkuespiller;
 
 
@@ -258,14 +231,14 @@ CREATE TABLE DeltarIAkt (
     constraint FK_DeltarIAkt_AKID foreign key (AKID) references Akt(AKID)
 );
 
---Oppretter Billettkjøp-Tabell
-CREATE TABLE BillettKjøp (
+--Oppretter Billettkjoep-Tabell
+CREATE TABLE BillettKjoep (
     BID INT NOT NULL,
     KID INT NOT NULL,
     Dato DATE NOT NULL,
     Tid TIME NOT NULL,
-    constraint FK_BillettKjøp_BID foreign key (BID) references Billett(BID),
-    constraint FK_BillettKjøp_KID foreign key (KID) references Kundeprofil(KID)
+    constraint FK_BillettKjoep_BID foreign key (BID) references Billett(BID),
+    constraint FK_BillettKjoep_KID foreign key (KID) references Kundeprofil(KID)
 );
 
 --Oppretter Typene-Tabell
