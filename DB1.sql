@@ -1,37 +1,37 @@
 --SQL Script, Gruppe 27, Prosjekt TDT4145 VÅR 2024: Ole Marcus Aarnes, Morten Kjelsrud, Benjamin Færestrand
---Halla
+
 
 --Dropper eksisterende tabeller
-drop table Billetter;
-drop table Forestillinger;
-drop table Person;
-drop table Teaterstykke;
-drop table Akt;
-drop table Sal;
-drop table Kulisser;
-drop table Stol;
-drop table Rolle;
-drop table Skuespiller;
-drop table Kundeprofil;
-drop table BillettType;
-drop table Oppgaver;
-drop table Ansatt;
-drop table HarOppgave;
-drop table AnsattSom;
-drop table HarAkt;
-drop table Deltar;
-drop table HarStol;
-drop table ForestillingI;
-drop table HarForestilling;
-drop table TilForestilling;
-drop table HarKulisser;
-drop table HarRolle;
-drop table DeltarIAkt;
-drop table BillettKjøp;
-drop table Typene;
-drop table HarSete;
-drop table HarTeaterstykke;
-drop table PersonSkuespiller;
+drop table Billetter,
+Forestillinger,
+Person,
+Teaterstykke,
+Akt,
+Sal,
+Kulisser,
+Stol,
+Rolle,
+Skuespiller,
+Kundeprofil,
+BillettType,
+Oppgaver,
+Ansatt,
+HarOppgave,
+AnsattSom,
+HarAkt,
+Deltar,
+HarStol,
+ForestillingI,
+HarForestilling,
+TilForestilling,
+HarKulisser,
+HarRolle,
+DeltarIAkt,
+BillettKjøp,
+Typene,
+HarSete,
+HarTeaterstykke,
+PersonSkuespiller;
 
 
 --Oppretter Billett-tabell
