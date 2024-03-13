@@ -112,7 +112,9 @@ CREATE TABLE Kundeprofil (
 CREATE TABLE BillettType (
     BTID INTEGER,
     Gruppe VARCHAR(30),
-    constraint BTID_pk primary key (BTID)   
+    Pris INTEGER,
+    constraint BTID_pk primary key (BTID)  
+    constraint TID_fk foreign key (TID) references Teaterstykke(TID)
     );
 
 --Oppretter Oppgaver-tabell
@@ -292,6 +294,9 @@ INSERT INTO Sal values (1, 332, 'Gamle Scene');
 INSERT INTO Teaterstykke values (1, 'Kongsemnene')
 INSERT INTO Teaterstykke values (2, 'Størst av alt er kjærligheten')
 
+--Person
+
+
 --Rolle
 INSERT INTO Rolle values (1, 'Haakon Haakonssønn')
 INSERT INTO Rolle values (2, 'Inga fra Vartjeg')
@@ -305,3 +310,78 @@ INSERT INTO Rolle values (9, 'Paal Flida')
 INSERT INTO Rolle values (10, 'Baard Bratte')
 INSERT INTO Rolle values (11, 'Jatgeir Skald')
 INSERT INTO Rolle values (12, 'Peter')
+INSERT INTO Rolle values (13, 'Sunniva Du Mond Nordal')
+INSERT INTO Rolle values (14, 'Jo Saberniak')
+INSERT INTO Rolle values (15, 'Marte M. Steinholt')
+INSERT INTO Rolle values (16, 'Tor Ivar Hagen')
+INSERT INTO Rolle values (17, 'Trond-Ove Skrødal')
+INSERT INTO Rolle values (18, 'Natalie Grøndahl Tangen')
+INSERT INTO Rolle values (19, 'Åsmund Flaten')
+
+
+--Oppgaver
+INSERT INTO Oppgaver values (1, 'Musiker')
+INSERT INTO Oppgaver values (2, 'Regissor')
+INSERT INTO Oppgaver values (3, 'ScenografiAnsvarlig')
+INSERT INTO Oppgaver values (4, 'KostymedesignAnsvarlig')
+INSERT INTO Oppgaver values (5, 'Koreografi')
+INSERT INTO Oppgaver values (6, 'MusikkOgLydAnsvarlig')
+INSERT INTO Oppgaver values (7, 'Dramaturg')
+INSERT INTO Oppgaver values (8, 'Sufflor')
+INSERT INTO Oppgaver values (9, 'AnsvarligDirektor')
+
+--Skuespiller, Skal vi legge til rolle id for hver skuesspiller? Skal vi legge til teaterstykke til en skuespiller?
+INSERT INTO Skuespiller values (1, 'Arturo Scotti')
+INSERT INTO Skuespiller values (2, 'Ingunn Beate Strige Øyen')
+INSERT INTO Skuespiller values (3, 'Hans Petter Nilsen')
+INSERT INTO Skuespiller values (4, 'Madeleine Brandtzæg Nilsen') 
+INSERT INTO Skuespiller values (5, 'Synnøve Fossum Eriksen')
+INSERT INTO Skuespiller values (6, 'Emma Caroline Deichmann')
+INSERT INTO Skuespiller values (7, 'Thomas Jensen Takyi')
+INSERT INTO Skuespiller values (8, 'Per Bostad Gulliksen')
+INSERT INTO Skuespiller values (9, 'Isak Holmen Sørensen')
+INSERT INTO Skuespiller values (10, 'Fabian Heidelberg Lunde')
+INSERT INTO Skuespiller values (11, 'Emil Olafsson')
+INSERT INTO Skuespiller values (12, 'Snorre Ryen Tøndel')
+INSERT INTO Skuespiller values (13, 'Sunniva Du Mond Nordal')
+INSERT INTO Skuespiller values (14, 'Jo Saberniak')
+INSERT INTO Skuespiller values (15, 'Marte M. Steinholt')
+INSERT INTO Skuespiller values (16, 'Tor Ivar Hagen')
+INSERT INTO Skuespiller values (17, 'Trond-Ove Skrødal')
+INSERT INTO Skuespiller values (18, 'Natalie Grøndahl Tangen')
+INSERT INTO Skuespiller values (19, 'Åsmund Flaten')
+
+--KundeProfil
+INSERT INTO Kundeprofil (KID, navn, TlfNr, Adresse) VALUES
+(1, 'Ola Nordmann', 12345678, 'Gateadresse 123'),
+(2, 'Kari Nordmann', 87654321, 'Gateadresse 321'),
+--etc.
+
+--Billetter
+INSERT INTO Billetter (BID, stolNR, radNR, FID, BTID, SalID, OmraadeNavn) VALUES
+(1, 1, 1, 1, 1, 1, 'Hovedscenen'), 
+(2, 2, 1, 1, 1, 1, 'Hovedscenen'),
+(3, 3, 1, 1, 1, 1, 'Hovedscenen'),
+, --etc.
+
+--Stol
+INSERT INTO Stol (StolNR, RadNR, SalID, OmraadeNavn) VALUES
+(1, 1, 1, 'Hovedscenen'),
+(2, 1, 1, 'Hovedscenen'),
+(3, 1, 1, 'Hovedscenen'),
+--etc.
+
+--BillettType, forskjellige billetpriser for forestillinger. fremmedid mot det?
+INSERT INTO BillettType (BTID, Gruppe) VALUES
+(1, 'Ordinær',450,1),
+(2, 'Student', 280,1),
+(3, 'Honnør', 380,1),
+(4, 'Gruppe 10', 420,1),
+(5, 'Gruppe 10 Honnør', 360,1)
+(6, 'Ordinær',350,2),
+(7, 'Student', 300,2),
+(8, 'Honnør', 220,2),
+(9, 'Gruppe 10', 320,2),
+(10, 'Gruppe 10 Honnør',270,2)
+
+
