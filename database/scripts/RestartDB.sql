@@ -1,0 +1,32 @@
+-- Script for å restarte DB til utgangspunkt
+
+DROP TABLE Billetter;
+DROP TABLE Forestillinger;
+DROP TABLE Person;
+DROP TABLE Teaterstykke;
+DROP TABLE Akt;
+DROP TABLE Sal; 
+DROP TABLE Kulisser;
+DROP TABLE Stol;
+DROP TABLE Rolle;
+DROP TABLE Skuespiller;
+DROP TABLE Kundeprofil;
+DROP TABLE BillettType;
+DROP TABLE Oppgaver;
+DROP TABLE Ansatt;
+DROP TABLE HarOppgave;
+DROP TABLE AnsattSom;
+DROP TABLE HarAkt;
+DROP TABLE Deltar;
+DROP TABLE HarStol;
+DROP TABLE ForestillingI;
+DROP TABLE HarForestilling;
+DROP TABLE TilForestilling;
+DROP TABLE HarKulisser;
+DROP TABLE HarRolle;
+DROP TABLE DeltarIAkt;
+DROP TABLE BillettKjoep;
+DROP TABLE Typene;
+DROP TABLE HarSete;
+DROP TABLE HarTeaterstykke;
+DROP TABLE PersonSkuespiller;

@@ -1,12 +1,5 @@
 --SQL Script, Gruppe 27, Prosjekt TDT4145 VÅR 2024: Ole Marcus Aarnes, Morten Kjelsrud, Benjamin Færestrand
 
-
---Dropper eksisterende tabeller
-drop table if exists Billetter, Forestillinger, Person, Teaterstykke, Akt, Sal, Kulisser, Stol, Rolle, Skuespiller, Kundeprofil, BillettType, Oppgaver, Ansatt, HarOppgave,
-AnsattSom, HarAkt, Deltar, HarStol, ForestillingI, HarForestilling, TilForestilling, HarKulisser, HarRolle, DeltarIAkt, BillettKjoep, Typene, HarSete, HarTeaterstykke, 
-PersonSkuespiller;
-
-
 --Oppretter Billett-tabell
 CREATE TABLE Billetter (
     BID INTEGER,
