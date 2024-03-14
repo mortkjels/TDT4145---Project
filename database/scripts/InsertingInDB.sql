@@ -1,0 +1,1 @@
+-- Script til å legge til de nødvendige verdiene inn i databasen.
