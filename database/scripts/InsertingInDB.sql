@@ -1084,3 +1084,14 @@ INSERT INTO HarAkt VALUES
 --SAAEK
 (6,1);
 
+--Oppkobling av verdier HarKulisser
+INSERT INTO HarKulisser VALUES
+--KE
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
+
+--SAAEK
+(6,1);
