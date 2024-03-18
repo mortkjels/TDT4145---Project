@@ -34,8 +34,6 @@ CREATE TABLE Person (
     PID INTEGER,
     navn VARCHAR(30),
     epost VARCHAR(50),
-    AID INTEGER,
-    OpID INTEGER,
     constraint PID_pk primary key (PID),
     constraint Ansatt_fk foreign key (AID) references Ansatt (AID),
     constraint oppgaver_fk foreign key (OpID) references Oppgaver (OpID)
