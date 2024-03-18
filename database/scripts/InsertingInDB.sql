@@ -1074,3 +1074,44 @@ INSERT INTO Rolle VALUES
  (7, 6),
  (8, 4),
  (9, 8);
+
+ --Oppkobling av verdier Akt
+INSERT INTO Akt VALUES
+--KE
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
+
+--Oppkobling av verdier HarAkt, Antar at SAEK har kun en akt, siden det ikke står noe på nettet. 
+INSERT INTO HarAkt VALUES
+--KE
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
+
+--SAAEK
+(6,1);
+
+--Oppkobling av verdier Forestillinger
+
+--KE
+INSERT INTO Forestilling VALUES
+(1, '2024-02-01', '19:00', 1, 'Kongsemnene'),
+(2, '2024-02-02', '19:00', 2, 'Kongsemnene'),
+(3, '2024-02-03', '19:00', 3, 'Kongsemnene'),
+(4, '2024-02-05', '19:00', 4, 'Kongsemnene'),
+(5, '2024-02-06', '19:00', 5, 'Kongsemnene');
+
+--SAAEK
+(6, '2024-02-03', '18:30', 6, 'Størst av alt er kjærligheten'),
+(7, '2024-02-06', '18:30', 7, 'Størst av alt er kjærligheten'),
+(8, '2024-02-07', '18:30', 8, 'Størst av alt er kjærligheten'),
+(9, '2024-02-12', '18:30', 9, 'Størst av alt er kjærligheten'),
+(10, '2024-02-13', '18:30', 10, 'Størst av alt er kjærligheten'),
+(11, '2024-02-14', '18:30', 11, 'Størst av alt er kjærligheten');
+
+

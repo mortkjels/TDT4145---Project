@@ -31,9 +31,7 @@ CREATE TABLE Person (
     PID INTEGER,
     navn VARCHAR(30),
     epost VARCHAR(50),
-    constraint PID_pk primary key (PID),
-    constraint Ansatt_fk foreign key (AID) references Ansatt (AID),
-    constraint oppgaver_fk foreign key (OpID) references Oppgaver (OpID)
+    constraint PID_pk primary key (PID)
     );
 
 --Oppretter Teaterstykke-tabell (dropper tabell hvis allerede finnes)
@@ -48,7 +46,6 @@ CREATE TABLE Teaterstykke (
 DROP TABLE Akt;
 CREATE TABLE Akt (
     AKID INTEGER,
-    navn VARCHAR(50),
     Nummer INTEGER,
     constraint AKID_pk primary key (AKID)
     );
