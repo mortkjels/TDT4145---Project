@@ -1,4 +1,5 @@
-# Tester å lage en scanner til å undersøke tekstfilen.
+# Deloppgave 2: Skript for å lese inn stoler fra tekstfiler og legge dem til i databasen
+
 # Henter filene:
 gamle_scene = "../filesNeeded/gamle-scene.txt"
 hovedscenen = "../filesNeeded/hovedscenen.txt"
@@ -27,17 +28,6 @@ def scan_alle_stoler(filnavn):
     return stoler
 
 
-# Debugging 
-# stoler_kjopt_hs = scan_alle_stoler(hovedscenen)
-# stoler_kjopt_gs = scan_alle_stoler(gamle_scene)
-# print("Printer kjøpte stoler for Hovedscenen:\n")
-# for stol in stoler_kjopt_hs:
-#     print(stol)
-# print("\n ------------------------- \n")
-# print("Printer kjøpte stoler for Gamle Scenen:\n")
-# for stol in stoler_kjopt_gs:
-#     print(stol)
-
 # Sette inn billetter i som er kjøpt i databasen
 import sqlite3 #Importerer sqlite3 for å kunne koble til databasen og legge til stoler
 
@@ -60,3 +50,14 @@ conn.commit()
 conn.close()
 
 print('Alle stoler som er kjøpt fra txt-filene er lagt til i databasen.')
+
+# Debugging 
+# stoler_kjopt_hs = scan_alle_stoler(hovedscenen)
+# stoler_kjopt_gs = scan_alle_stoler(gamle_scene)
+# print("Printer kjøpte stoler for Hovedscenen:\n")
+# for stol in stoler_kjopt_hs:
+#     print(stol)
+# print("\n ------------------------- \n")
+# print("Printer kjøpte stoler for Gamle Scenen:\n")
+# for stol in stoler_kjopt_gs:
+#     print(stol)
