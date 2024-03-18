@@ -4,16 +4,13 @@
 DROP TABLE Billetter;
 CREATE TABLE Billetter (
     BID INTEGER,
-    stolNR INTEGER,
-    radNR INTEGER,
     FID INTEGER,
     BTID INTEGER,
-    SalID INTEGER,
-    OmraadeNavn VARCHAR(50),
+    StolID INTEGER,
     constraint BID_pk primary key (BID),
     constraint forestilling_fk foreign key (FID) references Forestillinger(FID),
     constraint billettype_fk foreign key (BTID) references BillettType(BTID),
-    constraint salID_fk foreign key (SalID) references Sal(SalID)
+    constraint stolID_fk foreign key (StolID) references Stol(StolID)
     );
 
 --Oppretter Forestillinger-tabell (dropper tabell hvis allerede finnes)
@@ -76,11 +73,12 @@ CREATE TABLE Kulisser (
 --Oppretter Stol-tabell (dropper tabell hvis allerede finnes)
 DROP TABLE Stol;
 CREATE TABLE Stol (
+    StolID INTEGER,
     StolNR INTEGER,
     RadNR INTEGER,
     SalID INTEGER,
     OmraadeNavn VARCHAR(50),
-    constraint Stol_pk primary key (StolNR, RadNR, OmraadeNavn, SalID),
+    constraint StolID_pk primary key (StolID), 
     constraint salID_fk foreign key (SalID) references Sal(SalID)
     );
 
