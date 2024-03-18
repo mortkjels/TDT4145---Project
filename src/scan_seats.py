@@ -28,12 +28,15 @@ def scan_alle_stoler(filnavn):
 
 
 # Debugging 
-stoler_kjopt_hs = scan_alle_stoler(hovedscenen)
-stoler_kjopt_gs = scan_alle_stoler(gamle_scene)
-print("Printer kjøpte stoler for Hovedscenen:\n")
-for stol in stoler_kjopt_hs:
-    print(stol)
-print("\n ------------------------- \n")
-print("Printer kjøpte stoler for Gamle Scenen:\n")
-for stol in stoler_kjopt_gs:
-    print(stol)
+# stoler_kjopt_hs = scan_alle_stoler(hovedscenen)
+# stoler_kjopt_gs = scan_alle_stoler(gamle_scene)
+# print("Printer kjøpte stoler for Hovedscenen:\n")
+# for stol in stoler_kjopt_hs:
+#     print(stol)
+# print("\n ------------------------- \n")
+# print("Printer kjøpte stoler for Gamle Scenen:\n")
+# for stol in stoler_kjopt_gs:
+#     print(stol)
+
+# Sette inn billetter i som er kjøpt i databasen
+import sqlite3
