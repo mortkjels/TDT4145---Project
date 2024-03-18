@@ -1,7 +1,7 @@
 --SQL Script, Gruppe 27, Prosjekt TDT4145 VÅR 2024: Ole Marcus Aarnes, Morten Kjelsrud, Benjamin Færestrand
 
 --Oppretter Billett-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Billetter;
+DROP TABLE IF EXISTS Billetter;
 CREATE TABLE Billetter (
     BID INTEGER,
     FID INTEGER,
@@ -14,7 +14,7 @@ CREATE TABLE Billetter (
     );
 
 --Oppretter Forestillinger-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Forestillinger;
+DROP TABLE IF EXISTS Forestillinger;
 CREATE TABLE Forestillinger (
     FID INTEGER,
     Dato DATE,
@@ -26,7 +26,7 @@ CREATE TABLE Forestillinger (
     );
 
 --Oppretter Person-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Person;
+DROP TABLE IF EXISTS Person;
 CREATE TABLE Person (
     PID INTEGER,
     navn VARCHAR(30),
@@ -35,7 +35,7 @@ CREATE TABLE Person (
     );
 
 --Oppretter Teaterstykke-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Teaterstykke;
+DROP TABLE IF EXISTS Teaterstykke;
 CREATE TABLE Teaterstykke (
     TID INTEGER,
     navn VARCHAR(50),
@@ -43,7 +43,7 @@ CREATE TABLE Teaterstykke (
     );
 
 --Oppretter Akt-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Akt;
+DROP TABLE IF EXISTS Akt;
 CREATE TABLE Akt (
     AKID INTEGER,
     Nummer INTEGER,
@@ -51,7 +51,7 @@ CREATE TABLE Akt (
     );
 
 --Oppretter Sal-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Sal;
+DROP TABLE IF EXISTS Sal;
 CREATE TABLE Sal (
     SalID INTEGER,
     Kapasitet INTEGER,
@@ -60,7 +60,7 @@ CREATE TABLE Sal (
     );
 
 --Oppretter Kulisser-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Kulisser;  
+DROP TABLE IF EXISTS Kulisser;  
 CREATE TABLE Kulisser (
     KUID INTEGER,
     Typer VARCHAR(30),
@@ -68,7 +68,7 @@ CREATE TABLE Kulisser (
     );
 
 --Oppretter Stol-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Stol;
+DROP TABLE IF EXISTS Stol;
 CREATE TABLE Stol (
     StolID INTEGER,
     StolNR INTEGER,
@@ -80,7 +80,7 @@ CREATE TABLE Stol (
     );
 
 --Oppretter Rolle-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Rolle;
+DROP TABLE IF EXISTS Rolle;
 CREATE TABLE Rolle (
     RID INTEGER,
     navn VARCHAR(50),
@@ -88,7 +88,7 @@ CREATE TABLE Rolle (
     );
 
 --Oppretter Skuespiller-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Skuespiller;
+DROP TABLE IF EXISTS Skuespiller;
 CREATE TABLE Skuespiller (
     SKID INTEGER,
     navn VARCHAR(50),
@@ -96,7 +96,7 @@ CREATE TABLE Skuespiller (
     );
 
 --Oppretter Kundeprofil-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Kundeprofil;
+DROP TABLE IF EXISTS Kundeprofil;
 CREATE TABLE Kundeprofil (
     KID INTEGER,
     navn VARCHAR(50),
@@ -106,7 +106,7 @@ CREATE TABLE Kundeprofil (
     );
 
 --Oppretter BillettType-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE BillettType;
+DROP TABLE IF EXISTS BillettType;
 CREATE TABLE BillettType (
     BTID INTEGER,
     Gruppe VARCHAR(30),
@@ -114,7 +114,7 @@ CREATE TABLE BillettType (
     );
 
 --Oppretter Oppgaver-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Oppgaver;
+DROP TABLE IF EXISTS Oppgaver;
 CREATE TABLE Oppgaver (
     OpID INTEGER,
     OppgaveType VARCHAR(50),
@@ -124,7 +124,7 @@ CREATE TABLE Oppgaver (
     );
 
 --Oppretter Ansatt-tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Ansatt;
+DROP TABLE IF EXISTS Ansatt;
 CREATE TABLE Ansatt (
     AID INTEGER,
     TypeAnsatt VARCHAR(50),
@@ -133,7 +133,7 @@ CREATE TABLE Ansatt (
     );
 
 --Oppretter HarOppgave-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarOppgave;
+DROP TABLE IF EXISTS HarOppgave;
 CREATE TABLE HarOppgave (
     PID INT NOT NULL,
     OpID INT NOT NULL,
@@ -143,7 +143,7 @@ CREATE TABLE HarOppgave (
 );
 
 --Oppretter AnsattSom-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE AnsattSom;
+DROP TABLE IF EXISTS AnsattSom;
 CREATE TABLE AnsattSom (
     PID INT NOT NULL,
     AID INT NOT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE AnsattSom (
 );
 
 --Oppretter Deltar-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Deltar;
+DROP TABLE IF EXISTS Deltar;
 CREATE TABLE Deltar (
     PID INT NOT NULL,
     TID INT NOT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE Deltar (
 );
 
 --Oppretter HarAkt-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarAkt;
+DROP TABLE IF EXISTS HarAkt;
 CREATE TABLE HarAkt (
     AKID INT NOT NULL,
     TID INT NOT NULL,
@@ -173,7 +173,7 @@ CREATE TABLE HarAkt (
 );
 
 --Oppretter HarStol-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarStol;
+DROP TABLE IF EXISTS HarStol;
 CREATE TABLE HarStol (
     OmrådeNavn VARCHAR(50) NOT NULL,
     RadNr INT NOT NULL,
@@ -184,7 +184,7 @@ CREATE TABLE HarStol (
 );
 
 --Oppretter ForestillingI-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE ForestillingI;
+DROP TABLE IF EXISTS ForestillingI;
 CREATE TABLE ForestillingI (
     SalID INT NOT NULL,
     FID INT NOT NULL,
@@ -194,7 +194,7 @@ CREATE TABLE ForestillingI (
 );
 
 --Oppretter HarForestilling-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarForestilling;
+DROP TABLE IF EXISTS HarForestilling;
 CREATE TABLE HarForestilling (
     TID INT NOT NULL,
     FID INT NOT NULL,
@@ -204,7 +204,7 @@ CREATE TABLE HarForestilling (
 );
 
 --Oppretter TilForestilling-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE TilForestilling;
+DROP TABLE IF EXISTS TilForestilling;
 CREATE TABLE TilForestilling (
     BID INT NOT NULL,
     FID INT,
@@ -214,7 +214,7 @@ CREATE TABLE TilForestilling (
 );
 
 --Oppretter HarKulisser-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarKulisser;
+DROP TABLE IF EXISTS HarKulisser;
 CREATE TABLE HarKulisser (
     FID INT NOT NULL,
     KUID INT NOT NULL,
@@ -224,7 +224,7 @@ CREATE TABLE HarKulisser (
 );
 
 --Oppretter HarRolle-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarRolle;
+DROP TABLE IF EXISTS HarRolle;
 CREATE TABLE HarRolle (
     SKID INT NOT NULL,
     RID INT,
@@ -234,7 +234,7 @@ CREATE TABLE HarRolle (
 );
 
 --Oppretter DeltarIAkt-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE DeltarIAkt;
+DROP TABLE IF EXISTS DeltarIAkt;
 CREATE TABLE DeltarIAkt (
     AKID INT NOT NULL,
     RID INT,
@@ -244,7 +244,7 @@ CREATE TABLE DeltarIAkt (
 );
 
 --Oppretter Billettkjoep-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE BillettKjoep;
+DROP TABLE IF EXISTS BillettKjoep;
 CREATE TABLE BillettKjoep (
     BID INT NOT NULL,
     KID INT NOT NULL,
@@ -255,7 +255,7 @@ CREATE TABLE BillettKjoep (
 );
 
 --Oppretter Typene-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE Typene;
+DROP TABLE IF EXISTS Typene;
 CREATE TABLE Typene (
     BTID INT NOT NULL,
     BID INT NOT NULL,
@@ -265,7 +265,7 @@ CREATE TABLE Typene (
 );
 
 --Oppretter HarSete-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarSete;
+DROP TABLE IF EXISTS HarSete;
 CREATE TABLE HarSete (
     BID INT NOT NULL,
     OmrådeNavn VARCHAR(50) NOT NULL,
@@ -278,7 +278,7 @@ CREATE TABLE HarSete (
 );
 
 --Oppretter HarTeaterstykke-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE HarTeaterstykke;
+DROP TABLE IF EXISTS HarTeaterstykke;
 CREATE TABLE HarTeaterstykke (
     TID INT NOT NULL,
     SalID INT NOT NULL,
@@ -288,7 +288,7 @@ CREATE TABLE HarTeaterstykke (
 );
 
 --Oppretter ErPerson-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE ErPerson;
+DROP TABLE IF EXISTS PersonSkuespiller;
 CREATE TABLE PersonSkuespiller (
     PID INT NOT NULL,
     SKID INT NOT NULL,
