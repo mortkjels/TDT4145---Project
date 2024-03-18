@@ -1,7 +1,7 @@
 # Tester å lage en scanner til å undersøke tekstfilen.
 # Henter filene:
-gamle_scene = "./files needed/gamle-scene.txt"
-hovedscenen = "./files needed/hovedscenen.txt"
+gamle_scene = "../filesNeeded/gamle-scene.txt"
+hovedscenen = "../filesNeeded/hovedscenen.txt"
 
 def scan_alle_stoler(filnavn):
     omraade_til_salID = {'Galleri': 1, 'Balkong': 2, 'Parkett': 3}
@@ -39,4 +39,24 @@ def scan_alle_stoler(filnavn):
 #     print(stol)
 
 # Sette inn billetter i som er kjøpt i databasen
-import sqlite3
+import sqlite3 #Importerer sqlite3 for å kunne koble til databasen og legge til stoler
+
+stoler_kjopt_hs = scan_alle_stoler(hovedscenen)
+stoler_kjopt_gs = scan_alle_stoler(gamle_scene)
+
+# Koble til SQLite-databasen 'test.db'
+conn = sqlite3.connect('test.db')
+cursor = conn.cursor()
+
+# Utfører INSERT-spørringer for hver stol for hver scene (bytt ut 'stoler_kjopt_xx' med faktisk variabelnavn for valgt scene => hs: hovedscenen, gs: gamle_scene)
+for stol in stoler_kjopt_hs:
+    # Siden 'stoler_kjopt_xx' allerede er en tuple på formatet (StolNR, RadNR, SalID, OmraadeNavn), kan vi bruke den direkte på følgende måte:
+    cursor.execute('''INSERT INTO Stol VALUES (?, ?, ?, ?)''', stol)
+    
+# Lagrer (commits) endringene
+conn.commit()
+
+# Lukker forbindelsen med databasen.
+conn.close()
+
+print('Alle stoler som er kjøpt fra txt-filene er lagt til i databasen.')
