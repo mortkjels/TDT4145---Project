@@ -20,6 +20,23 @@ INSERT INTO Ansatt VALUES
 (4, "Statist"),
 (5, "Frivillig");
 
+--Oppkobling av verdier Forestillinger
+--KE
+INSERT INTO Forestilling VALUES
+(1, '2024-02-01', '19:00', 1, 'Kongsemnene'),
+(2, '2024-02-02', '19:00', 2, 'Kongsemnene'),
+(3, '2024-02-03', '19:00', 3, 'Kongsemnene'),
+(4, '2024-02-05', '19:00', 4, 'Kongsemnene'),
+(5, '2024-02-06', '19:00', 5, 'Kongsemnene');
+
+--SAAEK
+(6, '2024-02-03', '18:30', 6, 'Størst av alt er kjærligheten'),
+(7, '2024-02-06', '18:30', 7, 'Størst av alt er kjærligheten'),
+(8, '2024-02-07', '18:30', 8, 'Størst av alt er kjærligheten'),
+(9, '2024-02-12', '18:30', 9, 'Størst av alt er kjærligheten'),
+(10, '2024-02-13', '18:30', 10, 'Størst av alt er kjærligheten'),
+(11, '2024-02-14', '18:30', 11, 'Størst av alt er kjærligheten');
+
 -- Innlegging av de ulike personene for teateret:
 INSERT INTO Person VALUES
 -- Kunsternisk Lag for Kongsemnene:
@@ -34,36 +51,7 @@ INSERT INTO Person VALUES
 (8, "Magnus Mikaelsen", "magmik@tt.no"),
 (9, "Kristoffer Spender", "krispe@tt.no");
  
--- Oppkobling av verdier Person - Ansatt
-INSERT INTO AnsattSom VALUES
--- KE
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 2),
--- SAAEK
-(5, 1),
-(6, 1),
-(7, 3),
-(8, 2),
-(9, 5);
-
-  -- Oppkobling av verdier Person - Oppgaver
-INSERT INTO HarOppgave VALUES
--- KE
-(1, 1),
-(2, 3),
-(3, 4),
-(4, 8),
--- SAAEK
-(5, 1),
-(6, 3),
-(7, 6),
-(8, 4),
-(9, 8);
-
 --Rolle
-
 --KE
 INSERT INTO Rolle VALUES (1, 'Haakon Haakonssønn'),
 (2, 'Inga fra Vartjeg'),
@@ -1095,23 +1083,4 @@ INSERT INTO HarAkt VALUES
 
 --SAAEK
 (6,1);
-
---Oppkobling av verdier Forestillinger
-
---KE
-INSERT INTO Forestilling VALUES
-(1, '2024-02-01', '19:00', 1, 'Kongsemnene'),
-(2, '2024-02-02', '19:00', 2, 'Kongsemnene'),
-(3, '2024-02-03', '19:00', 3, 'Kongsemnene'),
-(4, '2024-02-05', '19:00', 4, 'Kongsemnene'),
-(5, '2024-02-06', '19:00', 5, 'Kongsemnene');
-
---SAAEK
-(6, '2024-02-03', '18:30', 6, 'Størst av alt er kjærligheten'),
-(7, '2024-02-06', '18:30', 7, 'Størst av alt er kjærligheten'),
-(8, '2024-02-07', '18:30', 8, 'Størst av alt er kjærligheten'),
-(9, '2024-02-12', '18:30', 9, 'Størst av alt er kjærligheten'),
-(10, '2024-02-13', '18:30', 10, 'Størst av alt er kjærligheten'),
-(11, '2024-02-14', '18:30', 11, 'Størst av alt er kjærligheten');
-
 
