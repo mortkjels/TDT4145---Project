@@ -35,7 +35,7 @@ stoler_kjopt_hs = scan_alle_stoler(hovedscenen)
 stoler_kjopt_gs = scan_alle_stoler(gamle_scene)
 
 # Koble til SQLite-databasen 'test.db'
-conn = sqlite3.connect('test.db')
+conn = sqlite3.connect('./database/test.db')
 cursor = conn.cursor()
 
 # Utfører INSERT-spørringer for hver stol for hver scene (bytt ut 'stoler_kjopt_xx' med faktisk variabelnavn for valgt scene => hs: hovedscenen, gs: gamle_scene)
