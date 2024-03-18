@@ -1,17 +1,33 @@
 # Tester å lage en scanner til å undersøke tekstfilen.
 # Henter filen:
 gamle_scene = "./files needed/gamle-scene.txt"
-hovedscenen = "./files needed/gamle-scene.txt"
+hovedscenen = "./files needed/hovedscenen.txt"
 
-def scann_scene(scene):
-    with open(scene, "r") as fil_read:
-        data = [line.strip() for line in fil_read.readlines()]
-    return data
+def scan_alle_stoler(filnavn):
+    omraade_til_salID = {'Galleri': 1, 'Balkong': 2, 'Parkett': 3}
+    stoler = []
+    omraade_navn = ''
+    rad_nr = 1  # Anta at radnummer starter på 1 for hvert område
 
-def make_scene_data():
-    return      
-        
-        
-        
-# Debugging
-print(scann_scene(gamle_scene))
+    with open(filnavn, 'r') as fil:
+        for linje in fil:
+            linje = linje.strip()
+            if linje in omraade_til_salID:
+                omraade_navn = linje
+                rad_nr = 1  # Nullstiller radnummer for hvert nytt område
+            elif linje and omraade_navn:  # Sjekker også at omraade_navn er gyldig før vi legger til stoler
+                stol_nr = 1
+                for tegn in linje:
+                    # Inkluderer kun gyldige stolposisjoner fra oppgitt tekstfil. (ignorer 'x')
+                    if tegn in '01': # Fjerne 0 for å kun scanne stoler som er kjøpt billett til
+                        stoler.append((stol_nr, rad_nr, omraade_til_salID[omraade_navn], omraade_navn))
+                        stol_nr += 1
+                rad_nr += 1
+
+    return stoler
+
+
+# Debugging 
+stoler = scan_alle_stoler(hovedscenen)
+for stol in stoler:
+    print(stol)
