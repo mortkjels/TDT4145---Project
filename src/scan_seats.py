@@ -35,11 +35,9 @@ def scan_alle_stoler(filnavn):
 
 # Funksjon som tar ut informasjon om stolene fra dictionary og returnerer en liste over stolene som vi kan bruke til å legge til i databasen
 
-def stol_info(omraade_dict, salID):
-    omraade_til_salID = {'Galleri': 1, 'Balkong': 2, 'Parkett': 3}
+def stol_info_alle(omraade_dict, salID):
     behandlede_stoler = []  # Holder på de behandlede stolene
     stol_nummer_id_for_sal = 1  # Unikt stolnummer som starter fra 1 og øker for hver stol i salen
-    stol_solgt = False  # Boolean for å sjekke om stol allerede er kjøpt
 
     for omraade_navn in reversed(list(omraade_dict.keys())):  # Reverserer listen for å behandle områdene i riktig rekkefølge - i forhold til scenen.
         rad_nr = 1  # Starter radnummereringen for hvert nytt område
@@ -49,12 +47,9 @@ def stol_info(omraade_dict, salID):
                 if stol == 'x':  # Hopper over stoler merket med 'x' - ugyldige stoler
                     stol_nummer_id_for_sal += 1
                     continue
-                if stol == '1':
-                    stol_solgt = True
-                    # Legger kun til gyldige stoler ('0' eller '1')
-                behandlede_stoler.append((stol_nummer_id_for_sal, rad_nr, omraade_til_salID[omraade_navn], omraade_navn, salID, stol_solgt))
+                # Legger kun til gyldige stoler ('0' eller '1')
+                behandlede_stoler.append((stol_nummer_id_for_sal, rad_nr, salID, omraade_navn))
                 stol_nummer_id_for_sal += 1
-                stol_solgt = False
                 
             rad_nr += 1  # Oppdaterer radnummer for neste rad i området
 
@@ -63,69 +58,41 @@ def stol_info(omraade_dict, salID):
                 
             
                 
-                
-    # ----------------- Test kode -----------------        
-    # omraade_til_salID = {'Galleri': 1, 'Balkong': 2, 'Parkett': 3}
-    # stoler = []
-    # omraade_navn = ''
-    # rad_nr = 1  # Anta at radnummer starter på 1 for hvert område
-    # stol_nr = 1  # Unikt stolnummer for hver stol
 
-    # with open(filnavn, 'r') as fil:
-    #     # print(fil.readlines())
-    #     for linje in reversed(fil.readlines()):
-    #         linje = linje.strip() # Fjerner whitespace fra linjen
-    #         print(linje)
-    #         if linje in omraade_til_salID:
-    #             omraade_navn = linje
-    #             rad_nr = 1  # Nullstiller radnummer for hvert nytt område
-    #         elif linje and omraade_navn:  # Sjekker også at omraade_navn er gyldig før vi legger til stoler
-    #             for tegn in linje:
-    #                 # Inkluderer kun gyldige stolposisjoner fra oppgitt tekstfil. 
-    #                 if tegn == 'x': # Hopper over stoler merket med 'x' - ugyldige stoler
-    #                     stol_nr += 1
-    #                     continue
-    #                 if tegn in '01': # Legger så til alle stoler som er merket med '0' eller '1'
-    #                     stoler.append((stol_nr, rad_nr, omraade_til_salID[omraade_navn], omraade_navn))
-    #                     stol_nr += 1
-    #             rad_nr += 1
+# Setter inn alle stoler i databasen
+import sqlite3 # Importerer sqlite3 for å kunne koble til databasen og legge til stoler
 
-    # return stoler
+# Setter opp nødvendige variabler for å legge til stoler i databasen - fra tekstfilene
+alle_stoler_hs = stol_info_alle(scan_alle_stoler(hovedscenen), 1)
+alle_stoler_gs = stol_info_alle(scan_alle_stoler(gamle_scene), 2)
 
+# Koble til SQLite-databasen 'test.db'
+conn = sqlite3.connect('./database/test.db')
+cursor = conn.cursor()
 
-# Sette inn billetter i som er kjøpt i databasen
-# import sqlite3 #Importerer sqlite3 for å kunne koble til databasen og legge til stoler
-
-# stoler_kjopt_hs = scan_alle_stoler(hovedscenen)
-# stoler_kjopt_gs = scan_alle_stoler(gamle_scene)
-
-# # Koble til SQLite-databasen 'test.db'
-# conn = sqlite3.connect('./database/test.db')
-# cursor = conn.cursor()
-
-# # Utfører INSERT-spørringer for hver stol for hver scene (bytt ut 'stoler_kjopt_xx' med faktisk variabelnavn for valgt scene => hs: hovedscenen, gs: gamle_scene)
-# for stol in stoler_kjopt_hs:
-#     # Siden 'stoler_kjopt_xx' allerede er en tuple på formatet (StolNR, RadNR, SalID, OmraadeNavn), kan vi bruke den direkte på følgende måte:
-#     cursor.execute('''INSERT INTO Stol VALUES (?, ?, ?, ?)''', stol)
+# Utfører INSERT-spørringer for hver stol for hver scene (bytt ut 'stoler_kjopt_xx' med faktisk variabelnavn for valgt scene => hs: hovedscenen, gs: gamle_scene)
+for stol in alle_stoler_hs:
+    # Siden 'stoler_kjopt_xx' allerede er en tuple på formatet (StolNR, RadNR, SalID, OmraadeNavn), kan vi bruke den direkte på følgende måte:
+    cursor.execute('''INSERT INTO Stol VALUES (?, ?, ?, ?)''', stol)
     
-# # Lagrer (commits) endringene
-# conn.commit()
+# Lagrer endringene
+conn.commit()
 
-# # Lukker forbindelsen med databasen.
-# conn.close()
+# Lukker forbindelsen med databasen.
+conn.close()
 
-# print('Alle stoler som er kjøpt fra txt-filene er lagt til i databasen.')
+print(f'Alle stoler fra oppgitte txt-fil er lagt til i databasen.')
 
 # Debugging 
-stoler_hentet_fra_hs = scan_alle_stoler(hovedscenen)
-stoler_til_database_hs = stol_info(stoler_hentet_fra_hs, 1)
-print("Printer kjøpte stoler for Hovedscenen:\n")
-for stol in stoler_til_database_hs:
-    print(stol)
-print("\n")
-stoler_hentet_fra_gs = scan_alle_stoler(gamle_scene)
-stoler_til_database_gs = stol_info(stoler_hentet_fra_gs, 2)
-print("Printer kjøpte stoler for Gamle Scenen:\n")
-for stol in stoler_til_database_gs:
-    print(stol)
-print(stoler_til_database_gs)
+# stoler_hentet_fra_hs = scan_alle_stoler(hovedscenen)
+# stoler_til_database_hs = stol_info_alle(stoler_hentet_fra_hs, 1)
+# print("Printer kjøpte stoler for Hovedscenen:\n")
+# for stol in stoler_til_database_hs:
+#     print(stol)
+# print("\n")
+# stoler_hentet_fra_gs = scan_alle_stoler(gamle_scene)
+# stoler_til_database_gs = stol_info_alle(stoler_hentet_fra_gs, 2)
+# print("Printer kjøpte stoler for Gamle Scenen:\n")
+# for stol in stoler_til_database_gs:
+#     print(stol)
+# print(stoler_til_database_gs)
