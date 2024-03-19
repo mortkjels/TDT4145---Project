@@ -1035,6 +1035,96 @@ INSERT INTO Rolle VALUES
  (8, "Magnus Mikaelsen", "magmik@tt.no"),
  (9, "Kristoffer Spender", "krispe@tt.no");
 
+ -- Innlegging av de ulike kulissene, valgt forestillinger fremfor teaterstykke på relasjon hvis det går i stykker.
+ --Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
+    INSERT INTO Kulisser VALUE
+    --KE
+    (1, "Stol"),
+    (1, "Gitar"),
+    (1, "Piano"),
+    (1, "Lommelykt"),
+    (1, "Flomlys"),
+    (1, "Scenerøyk");
+
+
+    (2, "Stol"),
+    (2, "Gitar"),
+    (2, "Piano"),
+    (2, "Lommelykt"),
+    (2, "Flomlys"),
+    (2, "Scenerøyk");
+
+    (3, "Stol"),
+    (3, "Gitar"),
+    (3, "Piano"),
+    (3, "Lommelykt"),
+    (3, "Flomlys"),
+    (3, "Scenerøyk");
+
+
+    (4, "Stol"),
+    (4, "Gitar"),
+    (4, "Piano"),
+    (4, "Lommelykt"),
+    (4, "Flomlys"),
+    (4, "Scenerøyk");
+
+
+    (5, "Stol"),
+    (5, "Gitar"),
+    (5, "Piano"),
+    (5, "Lommelykt"),
+    (5, "Flomlys"),
+    (5, "Scenerøyk");
+
+    --SAAEK
+    (6, "Stol"),
+    (6, "Gitar"),
+    (6, "Piano"),
+    (6, "Lommelykt"),
+    (6, "Flomlys"),
+    (6, "Scenerøyk");
+
+
+    (7, "Stol"),
+    (7, "Gitar"),
+    (7, "Piano"),
+    (7, "Lommelykt"),
+    (7, "Flomlys"),
+    (7, "Scenerøyk");
+
+    (8, "Stol"),
+    (8, "Gitar"),
+    (8, "Piano"),
+    (8, "Lommelykt"),
+    (8, "Flomlys"),
+    (8, "Scenerøyk");
+
+
+    (9, "Stol"),
+    (9, "Gitar"),
+    (9, "Piano"),
+    (9, "Lommelykt"),
+    (9, "Flomlys"),
+    (9, "Scenerøyk");
+
+
+    (10, "Stol"),
+    (10, "Gitar"),
+    (10, "Piano"),
+    (10, "Lommelykt"),
+    (10, "Flomlys"),
+    (10, "Scenerøyk");
+
+    (11, "Stol"),
+    (11, "Gitar"),
+    (11, "Piano"),
+    (11, "Lommelykt"),
+    (11, "Flomlys"),
+    (11, "Scenerøyk");
+
+
+
  -- Oppkobling av verdier Person - Ansatt
  INSERT INTO AnsattSom VALUES
  -- KE
@@ -1084,14 +1174,18 @@ INSERT INTO HarAkt VALUES
 --SAAEK
 (6,1);
 
---Oppkobling av verdier HarKulisser
+--Oppkobling av verdier HarKulisser, antagelse om hvor mange kulisser de forskjellige har
 INSERT INTO HarKulisser VALUES
 --KE
 (1,1),
 (2,2),
 (3,3),
 (4,4),
-(5,5);
+(5,5),
+(6,6),
+
+
 
 --SAAEK
-(6,1);
+
+
