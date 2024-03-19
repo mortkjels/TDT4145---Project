@@ -32,7 +32,8 @@ def add_bought_tickets(filnavn, salID):
     for stol in stoler_solgt:
         cursor.execute("INSERT INTO Stol VALUES (?, ?, ?, ?)", stol)
         conn.commit()
-        conn.close()
+    
+    conn.close()
     print(f"Stolene i {filnavn} er lagt til i databasen")
     
 # Legger inn kjøpte stoler i databasen - for hovedscenen (test)
