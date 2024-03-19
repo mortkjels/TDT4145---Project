@@ -188,9 +188,9 @@ CREATE TABLE HarStol (
 --Oppretter ForestillingI-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS ForestillingI;
 CREATE TABLE ForestillingI (
-    SalID INT NOT NULL,
-    FID INT NOT NULL,
-    constraint PK_ForestillingI primary key (SalID),
+    SalID INTEGER NOT NULL,
+    FID INTEGER NOT NULL,
+    constraint PK_ForestillingI primary key (SalID, FID),
     constraint FK_ForestillingI_SalID foreign key (SalID) references Sal(SalID),
     constraint FK_ForestillingI_FID foreign key (FID) references Forestillinger(FID)
 );
@@ -198,9 +198,9 @@ CREATE TABLE ForestillingI (
 --Oppretter HarForestilling-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS HarForestilling;
 CREATE TABLE HarForestilling (
-    TID INT NOT NULL,
-    FID INT NOT NULL,
-    constraint PK_HarForestilling primary key (TID),
+    TID INTEGER,
+    FID INTEGER NOT NULL,
+    constraint PK_HarForestilling primary key (FID),
     constraint FK_HarForestilling_TID foreign key (TID) references Teaterstykke(TID),
     constraint FK_HarForestilling_FID foreign key (FID) references Forestillinger(FID)
 );
@@ -208,8 +208,8 @@ CREATE TABLE HarForestilling (
 --Oppretter TilForestilling-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS TilForestilling;
 CREATE TABLE TilForestilling (
-    BID INT NOT NULL,
-    FID INT,
+    BID INTEGER NOT NULL,
+    FID INTEGER,
     constraint PK_TilForestilling primary key (BID),
     constraint FK_TilForestilling_FID foreign key (FID) references Forestillinger(FID),
     constraint FK_TilForestilling_BID foreign key (BID) references Billetter(BID)
@@ -228,9 +228,9 @@ CREATE TABLE HarKulisser (
 --Oppretter HarRolle-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS HarRolle;
 CREATE TABLE HarRolle (
-    SKID INT NOT NULL,
-    RID INT,
-    constraint PK_HarRolle primary key (SKID,RID),
+    SKID INTEGER NOT NULL,
+    RID INTEGER,
+    constraint PK_HarRolle primary key (SKID),
     constraint FK_HarRolle_SKID foreign key (SKID) references Skuespiller(SKID),
     constraint FK_HarRolle_RID foreign key (RID) references Rolle(RID)
 );
@@ -238,9 +238,9 @@ CREATE TABLE HarRolle (
 --Oppretter DeltarIAkt-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS DeltarIAkt;
 CREATE TABLE DeltarIAkt (
-    AKID INT NOT NULL,
-    RID INT,
-    constraint PK_DeltarIAkt primary key (AKID),
+    AKID INTEGER,
+    RID INTEGER,
+    constraint PK_DeltarIAkt primary key (AKID, RID),
     constraint FK_DeltarIAkt_RID foreign key (RID) references Rolle(RID),
     constraint FK_DeltarIAkt_AKID foreign key (AKID) references Akt(AKID)
 );

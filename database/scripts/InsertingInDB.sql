@@ -84,7 +84,9 @@ INSERT INTO Skuespiller VALUES
 (16, 'Tor Ivar Hagen'),
 (17, 'Trond-Ove Skrødal'),
 (18, 'Natalie Grøndahl Tangen'),
-(19, 'Åsmund Flaten');
+(19, 'Åsmund Flaten'),
+(20, 'Emil Olafsson'),
+(21, 'Emma Caroline Deichmann');
 
 
 --BillettType, forskjellige billetpriser for forestillinger. fremmedid mot det?
@@ -295,8 +297,6 @@ INSERT INTO HarKulisser VALUES
 (11, 14),
 (11, 15);
 
-
-
 --Oppkobling av verdier for relasjonen HarTeaterstykke
 INSERT INTO HarTeaterstykke VALUES
 --KE
@@ -319,15 +319,15 @@ INSERT INTO HarRolle VALUES
 (10,10),
 (11,11),
 (12,12),
-(13,11),
-(14,6),
-(15,13),
-(16,14),
-(17,15),
-(18,16),
-(19,17),
-(20,18),
-(21,19);
+(20,13),
+(21,14),
+(13,15),
+(14,16),
+(15,17),
+(16,18),
+(17,19),
+(18,20),
+(19,21);
 
 
 --Innsetting av verdier for DeltarIAkt
@@ -337,81 +337,60 @@ INSERT INTO DeltarIAkt VALUES
 (3,1),
 (4,1),
 (5,1),
-(6,1),
+
 (1,2),
-(2,2),
 (3,2),
-(4,2),
-(5,2),
-(6,2),
+
 (1,3),
 (2,3),
 (3,3),
 (4,3),
 (5,3),
-(6,3),
+
 (1,4),
-(2,4),
-(3,4),
-(4,4),
 (5,4),
-(6,4),
+
 (1,5),
 (2,5),
 (3,5),
 (4,5),
 (5,5),
-(6,5),
-(1,6),
-(2,6),
-(3,6),
-(4,6),
-(5,6),
-(6,6);
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1),
-(4,11),
+
 (1,6),
 (2,6),
 (5,6),
-(1,2),
-(3,2),
-(1,3),
-(2,3),
-(3,3),
-(4,3),
-(5,3),
-(1,9),
-(2,9),
-(3,9),
-(4,9),
-(5,9),
+
+(1,7),
+(2,7),
+(3,7),
+
 (1,8),
 (2,8),
 (3,8),
 (4,8),
 (5,8),
-(1,5),
-(2,5),
-(3,5),
-(4,5),
-(5,5),
-(1,7),
-(2,7),
-(3,7),
+
+(1,9),
+(2,9),
+(3,9),
+(4,9),
+(5,9),
+
+(2,10),
+(4,10),
+
+(4,11),
+
 (3,12),
 (4,12),
 (5,12),
-(1,4),
-(5,4),
+
 (1,13),
 (2,13),
 (3,13),
 (4,13),
 (5,13),
+
 (4,14);
 
 --Innsetting av verdier for Deltar
@@ -430,16 +409,16 @@ INSERT INTO Deltar VALUES
 INSERT INTO ForestillingI VALUES
 
 (1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1),
-(6,2),
-(7,2),
-(8,2),
-(9,2),
-(10,2),
-(11,2);
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(2,6),
+(2,7),
+(2,8),
+(2,9),
+(2,10),
+(2,11);
 
 
 --Innsetting av verdier for HarForestilling 
