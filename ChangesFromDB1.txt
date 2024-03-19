@@ -1,0 +1,15 @@
+Endringer fra DB1.sql til CreatingDB.sql:
+
+1. Endret drop strukturen for å ha det mer oversiktelig. Vi synes det var bedre å gjøre det slik.
+2. Endret strukturen på hvordan vi ville lage tabellen med Forestillinger. Fjernet fremmednøkkel fra tabellen siden det var ikke nødvendig for at det skulle fungere slik vi ville.
+3. Samme gjaldt tabellen for Person, der vi fjernet AID og OpID av samme årsak.
+4. Fjernet navn fra Akt, vi vurderte det slik at det ikke var nødvendig, selv om akter kan ha et eget navn. 
+5. La til TID for BillettType grunnet at vi må spesifisere at vi har forskjellig pris på de ulike stykkene.
+6. La til FID for ForestillingI relasjonen grunnet at vi er nødt til å definere at som egen unik identifikator for at vi ikke får feil. 
+7. Samme gjelder HarForestilling der vi la til FID.
+8. La også til RID for DeltarIAkt, dette gjør at vi enklere kan skille hvilke roller som deltar i forskjellige akter. 
+9. Fjernet PersonSkuespiller, grunnet at vi definerte Personer som personer som ikke er skuespillere.
+ 
+
+
+
