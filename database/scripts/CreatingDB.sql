@@ -200,7 +200,7 @@ DROP TABLE IF EXISTS HarForestilling;
 CREATE TABLE HarForestilling (
     TID INTEGER,
     FID INTEGER NOT NULL,
-    constraint PK_HarForestilling primary key (FID),
+    constraint PK_HarForestilling primary key (FID,TID),
     constraint FK_HarForestilling_TID foreign key (TID) references Teaterstykke(TID),
     constraint FK_HarForestilling_FID foreign key (FID) references Forestillinger(FID)
 );
