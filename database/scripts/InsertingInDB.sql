@@ -1263,7 +1263,42 @@ INSERT INTO HarRolle VALUES
 (4,14);
 
 --Innsetting av verdier for Deltar
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,2),
+(6,2),
+(7,2),
+(8,2),
+(9,2);
 
+--Innsetting av verdier for ForestillingI
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(6,2),
+(7,2),
+(8,2),
+(9,2),
+(10,2),
+(11,2);
+
+
+--Innsetting av verdier for HarForestilling 
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(6,2),
+(7,2),
+(8,2),
+(9,2),
+(10,2),
+(11,2);
 
 --Antagelser;
 
