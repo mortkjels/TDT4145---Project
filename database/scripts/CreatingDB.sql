@@ -286,13 +286,3 @@ CREATE TABLE HarTeaterstykke (
     constraint FK_HarTeaterstykke_TID foreign key (TID) references Teaterstykke(TID),
     constraint FK_HarTeaterstykke_SalID foreign key (SalID) references Sal(SalID)
 );
-
---Oppretter ErPerson-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE IF EXISTS PersonSkuespiller;
-CREATE TABLE PersonSkuespiller (
-    PID INT NOT NULL,
-    SKID INT NOT NULL,
-    constraint PK_PersonSkuespiller primary key (SKID),
-    constraint FK_PersonSkuespiller_PID foreign key (PID) references Person(PID),
-    constraint FK_PersonSkuespiller_SKID foreign key (SKID) references Skuespiller(SKID)
-);

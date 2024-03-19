@@ -2,17 +2,17 @@
 
 --Setter inn verdier for de ulike tabellene;
 
---Sal
+--Innsetting av verdier for Sal
 INSERT INTO Sal VALUES
 (1, 524, 'Hovedscenen'),
 (2, 332, 'Gamle Scene');
  
---Teaterstykke
+--Innsetting av verdier for Teaterstykke
 INSERT INTO Teaterstykke VALUES
 (1, 'Kongsemnene'),
 (2, 'Størst av alt er kjærligheten');
 
--- Ulike typer Ansatt:
+--Innsetting av verdier for ulike typer Ansatt:
 INSERT INTO Ansatt VALUES
 (1, "Fast"),
 (2, "Midlertidig"),
@@ -20,7 +20,7 @@ INSERT INTO Ansatt VALUES
 (4, "Statist"),
 (5, "Frivillig");
 
---Oppkobling av verdier Forestillinger
+--Innsetting av verdier for Forestillinger
 --KE
 INSERT INTO Forestilling VALUES
 (1, '2024-02-01', '19:00', 1, 'Kongsemnene'),
@@ -37,7 +37,7 @@ INSERT INTO Forestilling VALUES
 (10, '2024-02-13', '18:30', 10, 'Størst av alt er kjærligheten'),
 (11, '2024-02-14', '18:30', 11, 'Størst av alt er kjærligheten');
 
--- Innlegging av de ulike personene for teateret:
+-- Innsetting av verdier for de ulike personene for teateret:
 INSERT INTO Person VALUES
 -- Kunsternisk Lag for Kongsemnene:
 (1, "Yury Butusov", "yurbut@tt.no"), -- Endre på AID og OpID attributter her burde være tekstrenger mtp. relasjostabell....
@@ -51,7 +51,7 @@ INSERT INTO Person VALUES
 (8, "Magnus Mikaelsen", "magmik@tt.no"),
 (9, "Kristoffer Spender", "krispe@tt.no");
  
---Rolle
+--Innsetting av verdier for Rolle
 --KE
 INSERT INTO Rolle VALUES (1, 'Haakon Haakonssønn'),
 (2, 'Inga fra Vartjeg'),
@@ -75,20 +75,9 @@ INSERT INTO Rolle VALUES (13, 'Sunniva Du Mond Nordal'),
 (18, 'Natalie Grøndahl Tangen'),
 (19, 'Åsmund Flaten');
 
-
---Oppgaver
-INSERT INTO Oppgaver VALUES (1, 'Musiker'),
-(2, 'Regissor'),
-(3, 'ScenografiAnsvarlig'),
-(4, 'KostymedesignAnsvarlig'),
-(5, 'Koreografi'),
-(6, 'MusikkOgLydAnsvarlig'),
-(7, 'Dramaturg'),
-(8, 'Sufflor'),
-(9, 'AnsvarligDirektor');
-
---Skuespiller, Skal vi legge til rolle id for hver skuesspiller? Skal vi legge til teaterstykke til en skuespiller?
-INSERT INTO Skuespiller VALUES (1, 'Arturo Scotti'),
+--Innsetting av verdier for Skuespiller, Skal vi legge til rolle id for hver skuesspiller? Skal vi legge til teaterstykke til en skuespiller?
+INSERT INTO Skuespiller VALUES 
+(1, 'Arturo Scotti'),
 (2, 'Ingunn Beate Strige Øyen'),
 (3, 'Hans Petter Nilsen'),
 (4, 'Madeleine Brandtzæg Nilsen'),
@@ -108,17 +97,18 @@ INSERT INTO Skuespiller VALUES (1, 'Arturo Scotti'),
 (18, 'Natalie Grøndahl Tangen'),
 (19, 'Åsmund Flaten');
 
---KundeProfil
+--Innsetting av verdier for KundeProfil
 INSERT INTO Kundeprofil (KID, navn, TlfNr, Adresse) VALUES
 (1, 'Ola Nordmann', 12345678, 'Gateadresse 123'),
 (2, 'Kari Nordmann', 87654321, 'Gateadresse 321'),
 --etc.
 
+
+--Python?
 INSERT INTO Billetter (BID,FID, BTID, StolID) VALUES
 
 
-
---Stol
+--Innsetting av verdier for Stol
 INSERT INTO Stol (StolID, StolNR, RadNR, SalID, OmraadeNavn) VALUES
 (1, 1, 1, 1, 'Parkett'),
 (2, 2, 1, 1, 'Parkett'),
@@ -985,29 +975,13 @@ INSERT INTO BillettType (BTID, Gruppe) VALUES
 (7, 'Student', 300,2),
 (8, 'Honnør', 220,2),
 (9, 'Gruppe 10', 320,2),
-(10, 'Gruppe 10 Honnør',270,2)
+(10, 'Gruppe 10 Honnør',270,2),
+(11, 'Barn', 220, 2);
 
 --Teaterstykke
 INSERT INTO Teaterstykke VALUES 
 (1, 'Kongsemnene'), 
 (2, 'Størst av alt er kjærligheten');
-
---Rolle for de ulike stykkene.
-INSERT INTO Rolle VALUES 
--- Rollene for Kongsemnene:
- (1, 'Haakon Haakonssønn'),
- (2, 'Inga fra Vartjeg'),
- (3, 'Skule Jarl'),
- (4, 'Fru Ragnhild'),
- (5, 'Margrete'),
- (6, 'Sigrid '),
- (7, 'Biskop Nicolas'),
- (8, 'Gregorius Jonssønn'),
- (9, 'Paal Flida'),
- (10, 'Baard Bratte'),
- (11, 'Jatgeir Skald'),
- (12, 'Peter');
- -- Ikke noen roller beskrevet i Størst av alt er kjærligheten.
 
  -- Ulike typer Oppgave:
  INSERT INTO Oppgaver VALUES
@@ -1021,7 +995,7 @@ INSERT INTO Rolle VALUES
  (8, "Dramaturg"),
  (9, "Sufflor");
 
- -- Innlegging av de ulike personene for teateret:
+ -- Innlegging av de ulike personene for teateret, som ikke er skuesspillere:
  INSERT INTO Person VALUES
  -- Kunsternisk Lag for Kongsemnene:
  (1, "Yury Butusov", "yurbut@tt.no"), -- Endre på AID og OpID attributter her burde være tekstrenger mtp. relasjostabell....
@@ -1039,91 +1013,23 @@ INSERT INTO Rolle VALUES
  --Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
     INSERT INTO Kulisser VALUE
     --KE
-    (1, "Stol"),
-    (1, "Gitar"),
-    (1, "Piano"),
-    (1, "Lommelykt"),
-    (1, "Flomlys"),
-    (1, "Scenerøyk");
-
-
-    (2, "Stol"),
-    (2, "Gitar"),
-    (2, "Piano"),
-    (2, "Lommelykt"),
-    (2, "Flomlys"),
-    (2, "Scenerøyk");
-
-    (3, "Stol"),
-    (3, "Gitar"),
-    (3, "Piano"),
-    (3, "Lommelykt"),
-    (3, "Flomlys"),
-    (3, "Scenerøyk");
-
-
-    (4, "Stol"),
-    (4, "Gitar"),
-    (4, "Piano"),
-    (4, "Lommelykt"),
-    (4, "Flomlys"),
-    (4, "Scenerøyk");
-
-
-    (5, "Stol"),
-    (5, "Gitar"),
-    (5, "Piano"),
-    (5, "Lommelykt"),
-    (5, "Flomlys"),
-    (5, "Scenerøyk");
+    (1, "Sverd"),
+    (2, "Hest"),
+    (3, "Rustning"),
+    (4, "Dukke"),
+    (5, "Instrument"),
+    (6, "Scenerøyk"),
+    (7, "Dekk"),
+    (8, "Tepper"),
+    (9, "Borg");
 
     --SAAEK
-    (6, "Stol"),
-    (6, "Gitar"),
-    (6, "Piano"),
-    (6, "Lommelykt"),
-    (6, "Flomlys"),
-    (6, "Scenerøyk");
-
-
-    (7, "Stol"),
-    (7, "Gitar"),
-    (7, "Piano"),
-    (7, "Lommelykt"),
-    (7, "Flomlys"),
-    (7, "Scenerøyk");
-
-    (8, "Stol"),
-    (8, "Gitar"),
-    (8, "Piano"),
-    (8, "Lommelykt"),
-    (8, "Flomlys"),
-    (8, "Scenerøyk");
-
-
-    (9, "Stol"),
-    (9, "Gitar"),
-    (9, "Piano"),
-    (9, "Lommelykt"),
-    (9, "Flomlys"),
-    (9, "Scenerøyk");
-
-
     (10, "Stol"),
-    (10, "Gitar"),
-    (10, "Piano"),
-    (10, "Lommelykt"),
-    (10, "Flomlys"),
-    (10, "Scenerøyk");
-
-    (11, "Stol"),
     (11, "Gitar"),
-    (11, "Piano"),
-    (11, "Lommelykt"),
-    (11, "Flomlys"),
-    (11, "Scenerøyk");
-
-
+    (12, "Piano"),
+    (13, "Lommelykt"),
+    (14, "Flomlys"),
+    (15, "Scenerøyk");
 
  -- Oppkobling av verdier Person - Ansatt
  INSERT INTO AnsattSom VALUES
@@ -1166,26 +1072,124 @@ INSERT INTO Akt VALUES
 INSERT INTO HarAkt VALUES
 --KE
 (1,1),
-(2,2),
-(3,3),
-(4,4),
-(5,5);
+(2,1),
+(3,1),
+(4,1),
+(5,1);
 
 --SAAEK
-(6,1);
+(6,2);
 
 --Oppkobling av verdier HarKulisser, antagelse om hvor mange kulisser de forskjellige har
 INSERT INTO HarKulisser VALUES
 --KE
 (1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(1,6),
+(1,7),
+(1,8),
+(1,9);
+
+(2,1),
 (2,2),
+(2,3),
+(2,4),
+(2,5),
+(2,6),
+(2,7),
+(2,8),
+(2,9);
+
+(3,1),
+(3,2),
 (3,3),
+(3,4),
+(3,5),
+(3,6),
+(3,7),
+(3,8),
+(3,9);
+
+(4,1),
+(4,2),
+(4,3),
 (4,4),
+(4,5),
+(4,6),
+(4,7),
+(4,8),
+(4,9);
+
+(5,1),
+(5,2),
+(5,3),
+(5,4),
 (5,5),
-(6,6),
-
-
+(5,6),
+(5,7),
+(5,8),
+(5,9);
 
 --SAAEK
+(6,10),
+(6,11),
+(6,12),
+(6,13),
+(6,14),
+(6,15);
+
+(7, 10),
+(7, 11),
+(7, 12),
+(7, 13),
+(7, 14),
+(7, 15);
+
+(8, 10),
+(8, 11),
+(8, 12),
+(8, 13),
+(8, 14),
+(8, 15);
+
+(9, 10),
+(9, 11),
+(9, 12),
+(9, 13),
+(9, 14),
+(9, 15);
+
+(10, 10),
+(10, 11),
+(10, 12),
+(10, 13),
+(10, 14),
+(10, 15);
+
+(11, 10),
+(11, 11),
+(11, 12),
+(11, 13),
+(11, 14),
+(11, 15);
 
 
+
+--Oppkobling av verdier for relasjonen HarTeaterstykke
+INSERT INTO HarTeaterstykke VALUES
+--KE
+(1,1);
+
+--SAAEK
+(2,2);
+
+--Innsetting av verdier for PersonSkuespiller
+INSERT INTO PersonSkuespiller VALUES
+
+
+--Antagelser;
+
+--Person, legger inn personer som ikke er skuespillere i denne entiteten. Person er definert som ikke skuespillere
