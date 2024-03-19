@@ -66,12 +66,11 @@ CREATE TABLE Kulisser (
 --Oppretter Stol-tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS Stol;
 CREATE TABLE Stol (
-    StolID INTEGER,
     StolNR INTEGER,
     RadNR INTEGER,
     SalID INTEGER,
     OmraadeNavn VARCHAR(50),
-    constraint StolID_pk primary key (StolID), 
+    constraint StolID_pk primary key (StolNR, RadNR, SalID, OmraadeNavn), 
     constraint salID_fk foreign key (SalID) references Sal(SalID)
     );
 
