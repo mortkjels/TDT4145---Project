@@ -2,13 +2,16 @@
 DROP TABLE IF EXISTS Billetter;
 CREATE TABLE Billetter (
     BID INTEGER,
+    stolNR INTEGER,
+    radNR INTEGER,
     FID INTEGER,
     BTID INTEGER,
-    StolID INTEGER,
+    SalID INTEGER,
+    OmraadeNavn VARCHAR(50),
     constraint BID_pk primary key (BID),
     constraint forestilling_fk foreign key (FID) references Forestillinger(FID),
     constraint billettype_fk foreign key (BTID) references BillettType(BTID),
-    constraint stolID_fk foreign key (StolID) references Stol(StolID)
+    constraint salID_fk foreign key (SalID) references Sal(SalID)
     );
 
 --Oppretter Forestillinger-tabell (dropper tabell hvis allerede finnes)

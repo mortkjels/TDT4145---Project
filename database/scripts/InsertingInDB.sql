@@ -1303,3 +1303,6 @@ INSERT INTO HarForestilling VALUES
 -- --Person, legger inn personer som ikke er skuespillere i denne entiteten. Person er definert som ikke skuespillere
 -- --HarRolle og Skuesspiller, antar at for Rolle i SAAEK er kun skuesspiller navn og derfor er de like. Fant ikke noe mer angående dette på TT sine sider. 
 -- --En Skuespiller kan spille flere roller
+
+
+--Skal vi legge til predefinerte verdier for Kundeprofil?
