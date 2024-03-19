@@ -15,7 +15,7 @@ def scan_alle_stoler(filnavn):
 
     with open(filnavn, 'r') as fil:
         for linje in fil:
-            linje = linje.strip()
+            linje = linje.strip()[::-1] #Reverserer listen for å få riktig radnummer ved å starte fra bunn av filen
             if linje in omraade_til_salID:
                 omraade_navn = linje
                 rad_nr = 1  # Nullstiller radnummer for hvert nytt område
