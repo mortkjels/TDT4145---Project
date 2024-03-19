@@ -24,7 +24,7 @@ def add_bought_tickets(filnavn, salID):
                     stol_nummer_id_for_sal += 1
                     continue
                 # Legger kun til gyldige stoler ('0' eller '1')
-                stoler_solgt.append((stol_nummer_id_for_sal, rad_nr, omraade_navn, salID)) 
+                stoler_solgt.append((stol_nummer_id_for_sal, rad_nr, salID, omraade_navn)) 
                 stol_nummer_id_for_sal += 1
                 
             rad_nr += 1  # Oppdaterer radnummer for neste rad i området
@@ -33,12 +33,13 @@ def add_bought_tickets(filnavn, salID):
         cursor.execute("INSERT INTO Stol VALUES (?, ?, ?, ?)", stol)
         conn.commit()
     
-    conn.close()
     print(f"Stolene i {filnavn} er lagt til i databasen")
     
-# Legger inn kjøpte stoler i databasen - for hovedscenen (test)
+# Legger inn kjøpte stoler i databasen - for begge filene
 add_bought_tickets(hovedscenen, 1)
-     
+add_bought_tickets(gamle_scene, 2)
+
+conn.close()     
 
 
 
