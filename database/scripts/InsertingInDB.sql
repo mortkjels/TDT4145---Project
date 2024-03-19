@@ -22,35 +22,21 @@ INSERT INTO Ansatt VALUES
 
 --Innsetting av verdier for Forestillinger
 --KE
-INSERT INTO Forestilling VALUES
-(1, '2024-02-01', '19:00', 1, 'Kongsemnene'),
-(2, '2024-02-02', '19:00', 2, 'Kongsemnene'),
-(3, '2024-02-03', '19:00', 3, 'Kongsemnene'),
-(4, '2024-02-05', '19:00', 4, 'Kongsemnene'),
-(5, '2024-02-06', '19:00', 5, 'Kongsemnene');
+INSERT INTO Forestillinger VALUES
+(1, '2024-02-01', '19:00','Kongsemnene'),
+(2, '2024-02-02', '19:00','Kongsemnene'),
+(3, '2024-02-03', '19:00','Kongsemnene'),
+(4, '2024-02-05', '19:00','Kongsemnene'),
+(5, '2024-02-06', '19:00','Kongsemnene'),
 
 --SAAEK
-(6, '2024-02-03', '18:30', 6, 'Størst av alt er kjærligheten'),
-(7, '2024-02-06', '18:30', 7, 'Størst av alt er kjærligheten'),
-(8, '2024-02-07', '18:30', 8, 'Størst av alt er kjærligheten'),
-(9, '2024-02-12', '18:30', 9, 'Størst av alt er kjærligheten'),
-(10, '2024-02-13', '18:30', 10, 'Størst av alt er kjærligheten'),
-(11, '2024-02-14', '18:30', 11, 'Størst av alt er kjærligheten');
+(6, '2024-02-03', '18:30','Størst av alt er kjærligheten'),
+(7, '2024-02-06', '18:30','Størst av alt er kjærligheten'),
+(8, '2024-02-07', '18:30','Størst av alt er kjærligheten'),
+(9, '2024-02-12', '18:30','Størst av alt er kjærligheten'),
+(10, '2024-02-13', '18:30','Størst av alt er kjærligheten'),
+(11, '2024-02-14', '18:30','Størst av alt er kjærligheten');
 
--- Innsetting av verdier for de ulike personene for teateret:
-INSERT INTO Person VALUES
--- Kunsternisk Lag for Kongsemnene:
-(1, "Yury Butusov", "yurbut@tt.no"), -- Endre på AID og OpID attributter her burde være tekstrenger mtp. relasjostabell....
-(2, "Aleksandr Shishkin-hokusai", "aleshi@tt.no"),
-(3, "Eivind Myren", "eivmyr@tt.no"),
-(4, "Mina Rype Stokke", "miryst@tt.no"),
--- Kunsternisk Lag for Størt av alt er kjærligheten
-(5, "Jonas Corell Petersen", "jocope@tt.no"),
-(6, "David Gehrt", "dage@tt.no"),
-(7, "Gaute Tønder", "gauton@tt.no"),
-(8, "Magnus Mikaelsen", "magmik@tt.no"),
-(9, "Kristoffer Spender", "krispe@tt.no");
- 
 --Innsetting av verdier for Rolle
 --KE
 INSERT INTO Rolle VALUES 
@@ -67,10 +53,9 @@ INSERT INTO Rolle VALUES
 (11, 'Jatgeir Skald'),
 (12, 'Peter'),
 (13, 'Dagfinn Bonde'),
-(14, 'Ingebjørg');
+(14, 'Ingebjørg'),
 
 --SAAEK
-INSERT INTO Rolle VALUES 
 (15, 'Sunniva Du Mond Nordal'),
 (16, 'Jo Saberniak'),
 (17, 'Marte M. Steinholt'),
@@ -101,11 +86,375 @@ INSERT INTO Skuespiller VALUES
 (18, 'Natalie Grøndahl Tangen'),
 (19, 'Åsmund Flaten');
 
---Innsetting av verdier for KundeProfil
-INSERT INTO Kundeprofil (KID, navn, TlfNr, Adresse) VALUES
-(1, 'Ola Nordmann', 12345678, 'Gateadresse 123'),
-(2, 'Kari Nordmann', 87654321, 'Gateadresse 321'),
---etc.
+
+--BillettType, forskjellige billetpriser for forestillinger. fremmedid mot det?
+INSERT INTO BillettType VALUES
+(1, 'Ordinær',450,1),
+(2, 'Student', 280,1),
+(3, 'Honnør', 380,1),
+(4, 'Gruppe 10', 420,1),
+(5, 'Gruppe 10 Honnør', 360,1),
+(6, 'Ordinær',350,2),
+(7, 'Student', 220,2),
+(8, 'Honnør', 300,2),
+(9, 'Gruppe 10', 320,2),
+(10, 'Gruppe 10 Honnør',270,2),
+(11, 'Barn', 220, 2);
+
+ -- Ulike typer Oppgave:
+ INSERT INTO Oppgaver VALUES
+ (1, "AnsvarligDirektor"),
+ (2, "Regissor"),
+ (3, "ScenografiAnsvarlig"),
+ (4, "MusikkOgLydAnsvarlig"),
+ (5, "KostymedesignAnsvarlig"),
+ (6, "Musiker"),
+ (7, "Koreografi"),
+ (8, "Dramaturg"),
+ (9, "Sufflor");
+
+ -- Innlegging av de ulike personene for teateret, som ikke er skuesspillere:
+ INSERT INTO Person VALUES
+ -- Kunsternisk Lag for Kongsemnene:
+ (1, "Yury Butusov", "yurbut@tt.no"), -- Endre på AID og OpID attributter her burde være tekstrenger mtp. relasjostabell....
+ (2, "Aleksandr Shishkin-hokusai", "aleshi@tt.no"),
+ (3, "Eivind Myren", "eivmyr@tt.no"),
+ (4, "Mina Rype Stokke", "miryst@tt.no"),
+ -- Kunsternisk Lag for Størt av alt er kjærligheten
+ (5, "Jonas Corell Petersen", "jocope@tt.no"),
+ (6, "David Gehrt", "dage@tt.no"),
+ (7, "Gaute Tønder", "gauton@tt.no"),
+ (8, "Magnus Mikaelsen", "magmik@tt.no"),
+ (9, "Kristoffer Spender", "krispe@tt.no");
+
+ -- Innlegging av de ulike kulissene, valgt forestillinger fremfor teaterstykke på relasjon hvis det går i stykker.
+ --Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
+    INSERT INTO Kulisser VALUES
+    --KE
+    (1, "Sverd"),
+    (2, "Hest"),
+    (3, "Rustning"),
+    (4, "Dukke"),
+    (5, "Instrument"),
+    (6, "Scenerøyk"),
+    (7, "Dekk"),
+    (8, "Tepper"),
+    (9, "Borg"),
+
+    --SAAEK
+    (10, "Stol"),
+    (11, "Gitar"),
+    (12, "Piano"),
+    (13, "Lommelykt"),
+    (14, "Flomlys"),
+    (15, "Scenerøyk");
+
+ -- Oppkobling av verdier Person - Ansatt
+ INSERT INTO AnsattSom VALUES
+ -- KE
+ (1, 1),
+ (2, 1),
+ (3, 1),
+ (4, 2),
+ -- SAAEK
+ (5, 1),
+ (6, 1),
+ (7, 3),
+ (8, 2),
+ (9, 5);
+
+  -- Oppkobling av verdier Person - Oppgaver
+ INSERT INTO HarOppgave VALUES
+ -- KE
+ (1, 1),
+ (2, 3),
+ (3, 4),
+ (4, 8),
+ -- SAAEK
+ (5, 1),
+ (6, 3),
+ (7, 6),
+ (8, 4),
+ (9, 8);
+
+ --Oppkobling av verdier Akt
+INSERT INTO Akt VALUES
+--KE
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6);
+
+--Oppkobling av verdier HarAkt, Antar at SAEK har kun en akt, siden det ikke står noe på nettet. 
+INSERT INTO HarAkt VALUES
+--KE
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+
+--SAAEK
+(6,2);
+
+--Oppkobling av verdier HarKulisser, antagelse om hvor mange kulisser de forskjellige har
+INSERT INTO HarKulisser VALUES
+--KE
+(1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(1,6),
+(1,7),
+(1,8),
+(1,9),
+
+(2,1),
+(2,2),
+(2,3),
+(2,4),
+(2,5),
+(2,6),
+(2,7),
+(2,8),
+(2,9),
+
+(3,1),
+(3,2),
+(3,3),
+(3,4),
+(3,5),
+(3,6),
+(3,7),
+(3,8),
+(3,9),
+
+(4,1),
+(4,2),
+(4,3),
+(4,4),
+(4,5),
+(4,6),
+(4,7),
+(4,8),
+(4,9),
+
+(5,1),
+(5,2),
+(5,3),
+(5,4),
+(5,5),
+(5,6),
+(5,7),
+(5,8),
+(5,9),
+
+--SAAEK
+(6,10),
+(6,11),
+(6,12),
+(6,13),
+(6,14),
+(6,15),
+
+(7, 10),
+(7, 11),
+(7, 12),
+(7, 13),
+(7, 14),
+(7, 15),
+
+(8, 10),
+(8, 11),
+(8, 12),
+(8, 13),
+(8, 14),
+(8, 15),
+
+(9, 10),
+(9, 11),
+(9, 12),
+(9, 13),
+(9, 14),
+(9, 15),
+
+(10, 10),
+(10, 11),
+(10, 12),
+(10, 13),
+(10, 14),
+(10, 15),
+
+(11, 10),
+(11, 11),
+(11, 12),
+(11, 13),
+(11, 14),
+(11, 15);
+
+
+
+--Oppkobling av verdier for relasjonen HarTeaterstykke
+INSERT INTO HarTeaterstykke VALUES
+--KE
+(1,1),
+
+--SAAEK
+(2,2);
+
+--Innsetting av verdier for HarRolle
+INSERT INTO HarRolle VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6),
+(7,7),
+(8,8),
+(9,9),
+(10,10),
+(11,11),
+(12,12),
+(13,11),
+(14,6),
+(15,13),
+(16,14),
+(17,15),
+(18,16),
+(19,17),
+(20,18),
+(21,19);
+
+
+--Innsetting av verdier for DeltarIAkt
+INSERT INTO DeltarIAkt VALUES
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(6,1),
+(1,2),
+(2,2),
+(3,2),
+(4,2),
+(5,2),
+(6,2),
+(1,3),
+(2,3),
+(3,3),
+(4,3),
+(5,3),
+(6,3),
+(1,4),
+(2,4),
+(3,4),
+(4,4),
+(5,4),
+(6,4),
+(1,5),
+(2,5),
+(3,5),
+(4,5),
+(5,5),
+(6,5),
+(1,6),
+(2,6),
+(3,6),
+(4,6),
+(5,6),
+(6,6);
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(4,11),
+(1,6),
+(2,6),
+(5,6),
+(1,2),
+(3,2),
+(1,3),
+(2,3),
+(3,3),
+(4,3),
+(5,3),
+(1,9),
+(2,9),
+(3,9),
+(4,9),
+(5,9),
+(1,8),
+(2,8),
+(3,8),
+(4,8),
+(5,8),
+(1,5),
+(2,5),
+(3,5),
+(4,5),
+(5,5),
+(1,7),
+(2,7),
+(3,7),
+(3,12),
+(4,12),
+(5,12),
+(1,4),
+(5,4),
+(1,13),
+(2,13),
+(3,13),
+(4,13),
+(5,13),
+(4,14);
+
+--Innsetting av verdier for Deltar
+INSERT INTO Deltar VALUES
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,2),
+(6,2),
+(7,2),
+(8,2),
+(9,2);
+
+--Innsetting av verdier for ForestillingI
+INSERT INTO ForestillingI VALUES
+
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(6,2),
+(7,2),
+(8,2),
+(9,2),
+(10,2),
+(11,2);
+
+
+--Innsetting av verdier for HarForestilling 
+INSERT INTO HarForestilling VALUES
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(6,2),
+(7,2),
+(8,2),
+(9,2),
+(10,2),
+(11,2);
 
 
 --Python?
@@ -967,338 +1316,11 @@ INSERT INTO Stol (StolID, StolNR, RadNR, SalID, OmraadeNavn) VALUES
 (331, 16, 3, 2, 'Galleri'),
 (332, 17, 3, 2, 'Galleri');
 
-
---BillettType, forskjellige billetpriser for forestillinger. fremmedid mot det?
-INSERT INTO BillettType (BTID, Gruppe) VALUES
-(1, 'Ordinær',450,1),
-(2, 'Student', 280,1),
-(3, 'Honnør', 380,1),
-(4, 'Gruppe 10', 420,1),
-(5, 'Gruppe 10 Honnør', 360,1)
-(6, 'Ordinær',350,2),
-(7, 'Student', 300,2),
-(8, 'Honnør', 220,2),
-(9, 'Gruppe 10', 320,2),
-(10, 'Gruppe 10 Honnør',270,2),
-(11, 'Barn', 220, 2);
-
---Teaterstykke
-INSERT INTO Teaterstykke VALUES 
-(1, 'Kongsemnene'), 
-(2, 'Størst av alt er kjærligheten');
-
- -- Ulike typer Oppgave:
- INSERT INTO Oppgaver VALUES
- (1, "AnsvarligDirektor"),
- (2, "Regissor"),
- (3, "ScenografiAnsvarlig"),
- (4, "MusikkOgLydAnsvarlig"),
- (5, "KostymedesignAnsvarlig"),
- (6, "Musiker"),
- (7, "Koreografi"),
- (8, "Dramaturg"),
- (9, "Sufflor");
-
- -- Innlegging av de ulike personene for teateret, som ikke er skuesspillere:
- INSERT INTO Person VALUES
- -- Kunsternisk Lag for Kongsemnene:
- (1, "Yury Butusov", "yurbut@tt.no"), -- Endre på AID og OpID attributter her burde være tekstrenger mtp. relasjostabell....
- (2, "Aleksandr Shishkin-hokusai", "aleshi@tt.no"),
- (3, "Eivind Myren", "eivmyr@tt.no"),
- (4, "Mina Rype Stokke", "miryst@tt.no"),
- -- Kunsternisk Lag for Størt av alt er kjærligheten
- (5, "Jonas Corell Petersen", "jocope@tt.no"),
- (6, "David Gehrt", "dage@tt.no"),
- (7, "Gaute Tønder", "gauton@tt.no"),
- (8, "Magnus Mikaelsen", "magmik@tt.no"),
- (9, "Kristoffer Spender", "krispe@tt.no");
-
- -- Innlegging av de ulike kulissene, valgt forestillinger fremfor teaterstykke på relasjon hvis det går i stykker.
- --Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
-    INSERT INTO Kulisser VALUE
-    --KE
-    (1, "Sverd"),
-    (2, "Hest"),
-    (3, "Rustning"),
-    (4, "Dukke"),
-    (5, "Instrument"),
-    (6, "Scenerøyk"),
-    (7, "Dekk"),
-    (8, "Tepper"),
-    (9, "Borg");
-
-    --SAAEK
-    (10, "Stol"),
-    (11, "Gitar"),
-    (12, "Piano"),
-    (13, "Lommelykt"),
-    (14, "Flomlys"),
-    (15, "Scenerøyk");
-
- -- Oppkobling av verdier Person - Ansatt
- INSERT INTO AnsattSom VALUES
- -- KE
- (1, 1),
- (2, 1),
- (3, 1),
- (4, 2),
- -- SAAEK
- (5, 1),
- (6, 1),
- (7, 3),
- (8, 2),
- (9, 5);
-
-  -- Oppkobling av verdier Person - Oppgaver
- INSERT INTO HarOppgave VALUES
- -- KE
- (1, 1),
- (2, 3),
- (3, 4),
- (4, 8),
- -- SAAEK
- (5, 1),
- (6, 3),
- (7, 6),
- (8, 4),
- (9, 8);
-
- --Oppkobling av verdier Akt
-INSERT INTO Akt VALUES
---KE
-(1,1),
-(2,2),
-(3,3),
-(4,4),
-(5,5);
-
---Oppkobling av verdier HarAkt, Antar at SAEK har kun en akt, siden det ikke står noe på nettet. 
-INSERT INTO HarAkt VALUES
---KE
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1);
-
---SAAEK
-(6,2);
-
---Oppkobling av verdier HarKulisser, antagelse om hvor mange kulisser de forskjellige har
-INSERT INTO HarKulisser VALUES
---KE
-(1,1),
-(1,2),
-(1,3),
-(1,4),
-(1,5),
-(1,6),
-(1,7),
-(1,8),
-(1,9);
-
-(2,1),
-(2,2),
-(2,3),
-(2,4),
-(2,5),
-(2,6),
-(2,7),
-(2,8),
-(2,9);
-
-(3,1),
-(3,2),
-(3,3),
-(3,4),
-(3,5),
-(3,6),
-(3,7),
-(3,8),
-(3,9);
-
-(4,1),
-(4,2),
-(4,3),
-(4,4),
-(4,5),
-(4,6),
-(4,7),
-(4,8),
-(4,9);
-
-(5,1),
-(5,2),
-(5,3),
-(5,4),
-(5,5),
-(5,6),
-(5,7),
-(5,8),
-(5,9);
-
---SAAEK
-(6,10),
-(6,11),
-(6,12),
-(6,13),
-(6,14),
-(6,15);
-
-(7, 10),
-(7, 11),
-(7, 12),
-(7, 13),
-(7, 14),
-(7, 15);
-
-(8, 10),
-(8, 11),
-(8, 12),
-(8, 13),
-(8, 14),
-(8, 15);
-
-(9, 10),
-(9, 11),
-(9, 12),
-(9, 13),
-(9, 14),
-(9, 15);
-
-(10, 10),
-(10, 11),
-(10, 12),
-(10, 13),
-(10, 14),
-(10, 15);
-
-(11, 10),
-(11, 11),
-(11, 12),
-(11, 13),
-(11, 14),
-(11, 15);
-
-
-
---Oppkobling av verdier for relasjonen HarTeaterstykke
-INSERT INTO HarTeaterstykke VALUES
---KE
-(1,1);
-
---SAAEK
-(2,2);
-
---Innsetting av verdier for HarRolle
-INSERT INTO HarRolle VALUES
-(1,1),
-(2,2),
-(3,3),
-(4,4),
-(5,5),
-(6,6),
-(7,7),
-(8,8),
-(9,9),
-(10,10),
-(11,11),
-(12,12),
-(13,11),
-(14,6),
-(15,13),
-(16,14),
-(17,15),
-(18,16),
-(19,17),
-(20,18),
-(21,19);
-
-
---Innsetting av verdier for DeltarIAkt
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1),
-(4,11),
-(1,6),
-(2,6),
-(5,6),
-(1,2),
-(3,2),
-(1,3),
-(2,3),
-(3,3),
-(4,3),
-(5,3),
-(1,9),
-(2,9),
-(3,9),
-(4,9),
-(5,9),
-(1,8),
-(2,8),
-(3,8),
-(4,8),
-(5,8),
-(1,5),
-(2,5),
-(3,5),
-(4,5),
-(5,5),
-(1,7),
-(2,7),
-(3,7),
-(3,12),
-(4,12),
-(5,12),
-(1,4),
-(5,4),
-(1,13),
-(2,13),
-(3,13),
-(4,13),
-(5,13),
-(4,14);
-
---Innsetting av verdier for Deltar
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,2),
-(6,2),
-(7,2),
-(8,2),
-(9,2);
-
---Innsetting av verdier for ForestillingI
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1),
-(6,2),
-(7,2),
-(8,2),
-(9,2),
-(10,2),
-(11,2);
-
-
---Innsetting av verdier for HarForestilling 
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1),
-(6,2),
-(7,2),
-(8,2),
-(9,2),
-(10,2),
-(11,2);
+--Innsetting av verdier for KundeProfil
+INSERT INTO Kundeprofil (KID, navn, TlfNr, Adresse) VALUES
+(1, 'Ola Nordmann', 12345678, 'Gateadresse 123'),
+(2, 'Kari Nordmann', 87654321, 'Gateadresse 321'),
+--etc.
 
 --Antagelser;
 

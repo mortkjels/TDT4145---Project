@@ -19,10 +19,8 @@ CREATE TABLE Forestillinger (
     FID INTEGER,
     Dato DATE,
     Klokkeslett TIME,
-    BID INTEGER,
     navn VARCHAR(50),
-    constraint FID_pk primary key (FID),
-    constraint billett_fk foreign key (BID) references Billetter(BID)
+    constraint FID_pk primary key (FID)
     );
 
 --Oppretter Person-tabell (dropper tabell hvis allerede finnes)
@@ -110,8 +108,12 @@ DROP TABLE IF EXISTS BillettType;
 CREATE TABLE BillettType (
     BTID INTEGER,
     Gruppe VARCHAR(30),
-    constraint BTID_pk primary key (BTID)   
-    );
+    Pris INTEGER,
+    TID INTEGER,
+    constraint BTID_pk primary key (BTID),
+    constraint TID_fk foreign key (TID) references Teaterstykke(TID)
+);
+
 
 --Oppretter Oppgaver-tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS Oppgaver;
@@ -190,7 +192,7 @@ CREATE TABLE ForestillingI (
     FID INT NOT NULL,
     constraint PK_ForestillingI primary key (SalID),
     constraint FK_ForestillingI_SalID foreign key (SalID) references Sal(SalID),
-    constraint FK_ForestillingI_FID foreign key (FID) references Forestilling(FID)
+    constraint FK_ForestillingI_FID foreign key (FID) references Forestillinger(FID)
 );
 
 --Oppretter HarForestilling-Tabell (dropper tabell hvis allerede finnes)
@@ -200,7 +202,7 @@ CREATE TABLE HarForestilling (
     FID INT NOT NULL,
     constraint PK_HarForestilling primary key (TID),
     constraint FK_HarForestilling_TID foreign key (TID) references Teaterstykke(TID),
-    constraint FK_HarForestilling_FID foreign key (FID) references Forestilling(FID)
+    constraint FK_HarForestilling_FID foreign key (FID) references Forestillinger(FID)
 );
 
 --Oppretter TilForestilling-Tabell (dropper tabell hvis allerede finnes)
@@ -209,17 +211,17 @@ CREATE TABLE TilForestilling (
     BID INT NOT NULL,
     FID INT,
     constraint PK_TilForestilling primary key (BID),
-    constraint FK_TilForestilling_FID foreign key (FID) references Forestilling(FID),
+    constraint FK_TilForestilling_FID foreign key (FID) references Forestillinger(FID),
     constraint FK_TilForestilling_BID foreign key (BID) references Billetter(BID)
 );
 
 --Oppretter HarKulisser-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS HarKulisser;
 CREATE TABLE HarKulisser (
-    FID INT NOT NULL,
-    KUID INT NOT NULL,
-    constraint PK_HarKulisser primary key (FID, KUID),
-    constraint FK_HarKulisser_FID foreign key (FID) references Forestilling(FID),
+    FID INTEGER,
+    KUID INTEGER,
+    constraint PK_HarKulisser primary key (FID,KUID),
+    constraint FK_HarKulisser_FID foreign key (FID) references Forestillinger(FID),
     constraint FK_HarKulisser_KUID foreign key (KUID) references Kulisser(KUID)
 );
 
@@ -228,7 +230,7 @@ DROP TABLE IF EXISTS HarRolle;
 CREATE TABLE HarRolle (
     SKID INT NOT NULL,
     RID INT,
-    constraint PK_HarRolle primary key (SKID),
+    constraint PK_HarRolle primary key (SKID,RID),
     constraint FK_HarRolle_SKID foreign key (SKID) references Skuespiller(SKID),
     constraint FK_HarRolle_RID foreign key (RID) references Rolle(RID)
 );
@@ -285,4 +287,14 @@ CREATE TABLE HarTeaterstykke (
     constraint PK_HarTeaterstykke primary key (TID, SalID),
     constraint FK_HarTeaterstykke_TID foreign key (TID) references Teaterstykke(TID),
     constraint FK_HarTeaterstykke_SalID foreign key (SalID) references Sal(SalID)
+);
+
+--Oppretter TeaterStykkeBillettType-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS TeaterStykkeBillettType;
+CREATE TABLE TeaterStykkeBillettType (
+    TID INT NOT NULL,
+    BTID INT NOT NULL,
+    constraint PK_TeaterStykkeBillettType primary key (TID, BTID),
+    constraint FK_TeaterStykkeBillettType_TID foreign key (TID) references Teaterstykke(TID),
+    constraint FK_TeaterStykkeBillettType_BTID foreign key (BTID) references BillettType(BTID)
 );
