@@ -1,5 +1,3 @@
---SQL Script, Gruppe 27, Prosjekt TDT4145 VÅR 2024: Ole Marcus Aarnes, Morten Kjelsrud, Benjamin Færestrand
-
 --Oppretter Billett-tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS Billetter;
 CREATE TABLE Billetter (
