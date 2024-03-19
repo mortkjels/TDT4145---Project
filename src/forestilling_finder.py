@@ -26,14 +26,14 @@ def forestilling_finder(dato: str):
               FROM Forestillinger 
               INNER JOIN ForestillingI ON Forestillinger.FID = ForestillingI.FID 
               INNER JOIN Sal ON ForestillingI.SalID = Sal.SalID 
-              INNER JOIN Stol ON Sal.SalID = Stol.SalID 
+              LEFT OUTER JOIN Stol ON Sal.SalID = Stol.SalID 
               WHERE Dato = ? 
-              GROUP BY Dato, Klokken, SalNummer;'''
+              GROUP BY Klokken, SalNummer;'''
               , (dato,))
     
     resultat = c.fetchall() # Fetcher og skriver ut resultatet av spørringen.
     if not resultat:
-        return f'Ingen forestillinger funnet for {dato}'
+         print(f"Ingen forestillinger funnet for {dato}")
     #Skriver ut resultatet på en 'finere' måte:
     for forestilling in resultat:
         print(f'Forestilling: {forestilling[0]}, Dato: {forestilling[1]}, Klokkeslett: {forestilling[2]}, SalNummer: {forestilling[3]}, AntallBilletterSolgt: {forestilling[4]}')
