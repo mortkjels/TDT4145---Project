@@ -53,7 +53,8 @@ INSERT INTO Person VALUES
  
 --Innsetting av verdier for Rolle
 --KE
-INSERT INTO Rolle VALUES (1, 'Haakon Haakonssønn'),
+INSERT INTO Rolle VALUES 
+(1, 'Haakon Haakonssønn'),
 (2, 'Inga fra Vartjeg'),
 (3, 'Skule Jarl'),
 (4, 'Fru Ragnhild'),
@@ -64,16 +65,19 @@ INSERT INTO Rolle VALUES (1, 'Haakon Haakonssønn'),
 (9, 'Paal Flida'),
 (10, 'Baard Bratte'),
 (11, 'Jatgeir Skald'),
-(12, 'Peter');
+(12, 'Peter'),
+(13, 'Dagfinn Bonde'),
+(14, 'Ingebjørg');
 
 --SAAEK
-INSERT INTO Rolle VALUES (13, 'Sunniva Du Mond Nordal'),
-(14, 'Jo Saberniak'),
-(15, 'Marte M. Steinholt'),
-(16, 'Tor Ivar Hagen'),
-(17, 'Trond-Ove Skrødal'),
-(18, 'Natalie Grøndahl Tangen'),
-(19, 'Åsmund Flaten');
+INSERT INTO Rolle VALUES 
+(15, 'Sunniva Du Mond Nordal'),
+(16, 'Jo Saberniak'),
+(17, 'Marte M. Steinholt'),
+(18, 'Tor Ivar Hagen'),
+(19, 'Trond-Ove Skrødal'),
+(20, 'Natalie Grøndahl Tangen'),
+(21, 'Åsmund Flaten');
 
 --Innsetting av verdier for Skuespiller, Skal vi legge til rolle id for hver skuesspiller? Skal vi legge til teaterstykke til en skuespiller?
 INSERT INTO Skuespiller VALUES 
@@ -1186,10 +1190,83 @@ INSERT INTO HarTeaterstykke VALUES
 --SAAEK
 (2,2);
 
---Innsetting av verdier for PersonSkuespiller
-INSERT INTO PersonSkuespiller VALUES
+--Innsetting av verdier for HarRolle
+INSERT INTO HarRolle VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6),
+(7,7),
+(8,8),
+(9,9),
+(10,10),
+(11,11),
+(12,12),
+(13,11),
+(14,6),
+(15,13),
+(16,14),
+(17,15),
+(18,16),
+(19,17),
+(20,18),
+(21,19);
+
+
+--Innsetting av verdier for DeltarIAkt
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(4,11),
+(1,6),
+(2,6),
+(5,6),
+(1,2),
+(3,2),
+(1,3),
+(2,3),
+(3,3),
+(4,3),
+(5,3),
+(1,9),
+(2,9),
+(3,9),
+(4,9),
+(5,9),
+(1,8),
+(2,8),
+(3,8),
+(4,8),
+(5,8),
+(1,5),
+(2,5),
+(3,5),
+(4,5),
+(5,5),
+(1,7),
+(2,7),
+(3,7),
+(3,12),
+(4,12),
+(5,12),
+(1,4),
+(5,4),
+(1,13),
+(2,13),
+(3,13),
+(4,13),
+(5,13),
+(4,14);
+
+--Innsetting av verdier for Deltar
 
 
 --Antagelser;
 
 --Person, legger inn personer som ikke er skuespillere i denne entiteten. Person er definert som ikke skuespillere
+--HarRolle og Skuesspiller, antar at for Rolle i SAAEK er kun skuesspiller navn og derfor er de like. Fant ikke noe mer angående dette på TT sine sider. 
+--En Skuespiller kan spille flere roller
