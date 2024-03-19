@@ -1,28 +1,20 @@
 --SQL Script, Gruppe 27, Prosjekt TDT4145 VÅR 2024: Ole Marcus Aarnes, Morten Kjelsrud, Benjamin Færestrand
 
-
---Dropper eksisterende tabeller
-drop table if exists Billetter, Forestillinger, Person, Teaterstykke, Akt, Sal, Kulisser, Stol, Rolle, Skuespiller, Kundeprofil, BillettType, Oppgaver, Ansatt, HarOppgave,
-AnsattSom, HarAkt, Deltar, HarStol, ForestillingI, HarForestilling, TilForestilling, HarKulisser, HarRolle, DeltarIAkt, BillettKjoep, Typene, HarSete, HarTeaterstykke, 
-PersonSkuespiller;
-
-
---Oppretter Billett-tabell
+--Oppretter Billett-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Billetter;
 CREATE TABLE Billetter (
     BID INTEGER,
-    stolNR INTEGER,
-    radNR INTEGER,
     FID INTEGER,
     BTID INTEGER,
-    SalID INTEGER,
-    OmraadeNavn VARCHAR(50),
+    StolID INTEGER,
     constraint BID_pk primary key (BID),
     constraint forestilling_fk foreign key (FID) references Forestillinger(FID),
     constraint billettype_fk foreign key (BTID) references BillettType(BTID),
-    constraint salID_fk foreign key (SalID) references Sal(SalID)
+    constraint stolID_fk foreign key (StolID) references Stol(StolID)
     );
 
---Oppretter Forestillinger-tabell
+--Oppretter Forestillinger-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Forestillinger;
 CREATE TABLE Forestillinger (
     FID INTEGER,
     Dato DATE,
@@ -33,34 +25,33 @@ CREATE TABLE Forestillinger (
     constraint billett_fk foreign key (BID) references Billetter(BID)
     );
 
---Oppretter Person-tabell
+--Oppretter Person-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Person;
 CREATE TABLE Person (
     PID INTEGER,
     navn VARCHAR(30),
     epost VARCHAR(50),
-    AID INTEGER,
-    OpID INTEGER,
-    constraint PID_pk primary key (PID),
-    constraint Ansatt_fk foreign key (AID) references Ansatt (AID),
-    constraint oppgaver_fk foreign key (OpID) references Oppgaver (OpID)
+    constraint PID_pk primary key (PID)
     );
 
---Oppretter Teaterstykke-tabell
+--Oppretter Teaterstykke-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Teaterstykke;
 CREATE TABLE Teaterstykke (
     TID INTEGER,
     navn VARCHAR(50),
     constraint TID_pk primary key (TID)
     );
 
---Oppretter Akt-tabell
+--Oppretter Akt-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Akt;
 CREATE TABLE Akt (
     AKID INTEGER,
-    navn VARCHAR(50),
     Nummer INTEGER,
     constraint AKID_pk primary key (AKID)
     );
 
---Oppretter Sal-tabell
+--Oppretter Sal-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Sal;
 CREATE TABLE Sal (
     SalID INTEGER,
     Kapasitet INTEGER,
@@ -68,38 +59,44 @@ CREATE TABLE Sal (
     constraint salID_pk primary key (SalID)
     );
 
---Oppretter Kulisser-tabell    
+--Oppretter Kulisser-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Kulisser;  
 CREATE TABLE Kulisser (
     KUID INTEGER,
     Typer VARCHAR(30),
     constraint KUID_pk primary key (KUID)
     );
 
---Oppretter Stol-tabell
+--Oppretter Stol-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Stol;
 CREATE TABLE Stol (
+    StolID INTEGER,
     StolNR INTEGER,
     RadNR INTEGER,
     SalID INTEGER,
     OmraadeNavn VARCHAR(50),
-    constraint Stol_pk primary key (StolNR, RadNR, OmraadeNavn, SalID),
+    constraint StolID_pk primary key (StolID), 
     constraint salID_fk foreign key (SalID) references Sal(SalID)
     );
 
---Oppretter Rolle-tabell
+--Oppretter Rolle-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Rolle;
 CREATE TABLE Rolle (
     RID INTEGER,
     navn VARCHAR(50),
     constraint RID_pk primary key (RID)
     );
 
---Oppretter Skuespiller-tabell
+--Oppretter Skuespiller-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Skuespiller;
 CREATE TABLE Skuespiller (
     SKID INTEGER,
     navn VARCHAR(50),
     constraint SKID_pk primary key (SKID)
     );
 
---Oppretter Kundeprofil-tabell
+--Oppretter Kundeprofil-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Kundeprofil;
 CREATE TABLE Kundeprofil (
     KID INTEGER,
     navn VARCHAR(50),
@@ -108,14 +105,16 @@ CREATE TABLE Kundeprofil (
     constraint KID_pk primary key (KID)
     );
 
---Oppretter BillettType-tabell
+--Oppretter BillettType-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS BillettType;
 CREATE TABLE BillettType (
     BTID INTEGER,
     Gruppe VARCHAR(30),
     constraint BTID_pk primary key (BTID)   
     );
 
---Oppretter Oppgaver-tabell
+--Oppretter Oppgaver-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Oppgaver;
 CREATE TABLE Oppgaver (
     OpID INTEGER,
     OppgaveType VARCHAR(50),
@@ -124,7 +123,8 @@ CREATE TABLE Oppgaver (
     constraint OpID_pk primary key (OpID)
     );
 
---Oppretter Ansatt-tabell
+--Oppretter Ansatt-tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Ansatt;
 CREATE TABLE Ansatt (
     AID INTEGER,
     TypeAnsatt VARCHAR(50),
@@ -132,7 +132,8 @@ CREATE TABLE Ansatt (
     constraint AID_pk primary key (AID)
     );
 
---Oppretter HarOppgave-Tabell
+--Oppretter HarOppgave-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarOppgave;
 CREATE TABLE HarOppgave (
     PID INT NOT NULL,
     OpID INT NOT NULL,
@@ -141,7 +142,8 @@ CREATE TABLE HarOppgave (
     constraint FK_HarOppgave_OpID foreign key (OpID) references Oppgaver(OpID)
 );
 
---Oppretter AnsattSom-Tabell
+--Oppretter AnsattSom-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS AnsattSom;
 CREATE TABLE AnsattSom (
     PID INT NOT NULL,
     AID INT NOT NULL,
@@ -150,7 +152,8 @@ CREATE TABLE AnsattSom (
     constraint FK_AnsattSom_AID foreign key (AID) references Ansatt(AID)
 );
 
---Oppretter HarOppgave-Tabell
+--Oppretter Deltar-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Deltar;
 CREATE TABLE Deltar (
     PID INT NOT NULL,
     TID INT NOT NULL,
@@ -159,7 +162,8 @@ CREATE TABLE Deltar (
     constraint FK_Deltar_TID foreign key (TID) references Teaterstykke(TID)
 );
 
---Oppretter HarOppgave-Tabell
+--Oppretter HarAkt-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarAkt;
 CREATE TABLE HarAkt (
     AKID INT NOT NULL,
     TID INT NOT NULL,
@@ -168,7 +172,8 @@ CREATE TABLE HarAkt (
     constraint FK_HarAkt_AKID foreign key (AKID) references Akt(AKID)
 );
 
---Oppretter HarStol-Tabell
+--Oppretter HarStol-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarStol;
 CREATE TABLE HarStol (
     OmrådeNavn VARCHAR(50) NOT NULL,
     RadNr INT NOT NULL,
@@ -178,7 +183,8 @@ CREATE TABLE HarStol (
     constraint FK_HarStol_SalID foreign key (SalID) references Sal(SalID)
 );
 
---Oppretter ForestillingI-Tabell
+--Oppretter ForestillingI-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS ForestillingI;
 CREATE TABLE ForestillingI (
     SalID INT NOT NULL,
     FID INT NOT NULL,
@@ -187,7 +193,8 @@ CREATE TABLE ForestillingI (
     constraint FK_ForestillingI_FID foreign key (FID) references Forestilling(FID)
 );
 
---Oppretter HarForestilling-Tabell
+--Oppretter HarForestilling-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarForestilling;
 CREATE TABLE HarForestilling (
     TID INT NOT NULL,
     FID INT NOT NULL,
@@ -196,7 +203,8 @@ CREATE TABLE HarForestilling (
     constraint FK_HarForestilling_FID foreign key (FID) references Forestilling(FID)
 );
 
---Oppretter TilForestilling-Tabell
+--Oppretter TilForestilling-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS TilForestilling;
 CREATE TABLE TilForestilling (
     BID INT NOT NULL,
     FID INT,
@@ -205,7 +213,8 @@ CREATE TABLE TilForestilling (
     constraint FK_TilForestilling_BID foreign key (BID) references Billetter(BID)
 );
 
---Oppretter HarKulisser-Tabell
+--Oppretter HarKulisser-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarKulisser;
 CREATE TABLE HarKulisser (
     FID INT NOT NULL,
     KUID INT NOT NULL,
@@ -214,7 +223,8 @@ CREATE TABLE HarKulisser (
     constraint FK_HarKulisser_KUID foreign key (KUID) references Kulisser(KUID)
 );
 
---Oppretter HarRolle-Tabell
+--Oppretter HarRolle-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarRolle;
 CREATE TABLE HarRolle (
     SKID INT NOT NULL,
     RID INT,
@@ -223,7 +233,8 @@ CREATE TABLE HarRolle (
     constraint FK_HarRolle_RID foreign key (RID) references Rolle(RID)
 );
 
---Oppretter DeltarIAkt-Tabell
+--Oppretter DeltarIAkt-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS DeltarIAkt;
 CREATE TABLE DeltarIAkt (
     AKID INT NOT NULL,
     RID INT,
@@ -232,7 +243,8 @@ CREATE TABLE DeltarIAkt (
     constraint FK_DeltarIAkt_AKID foreign key (AKID) references Akt(AKID)
 );
 
---Oppretter Billettkjoep-Tabell
+--Oppretter Billettkjoep-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS BillettKjoep;
 CREATE TABLE BillettKjoep (
     BID INT NOT NULL,
     KID INT NOT NULL,
@@ -242,7 +254,8 @@ CREATE TABLE BillettKjoep (
     constraint FK_BillettKjoep_KID foreign key (KID) references Kundeprofil(KID)
 );
 
---Oppretter Typene-Tabell
+--Oppretter Typene-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS Typene;
 CREATE TABLE Typene (
     BTID INT NOT NULL,
     BID INT NOT NULL,
@@ -251,7 +264,8 @@ CREATE TABLE Typene (
     constraint FK_Typene_BTID foreign key (BTID) references BillettType(BTID)
 );
 
---Oppretter HarSete-Tabell
+--Oppretter HarSete-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarSete;
 CREATE TABLE HarSete (
     BID INT NOT NULL,
     OmrådeNavn VARCHAR(50) NOT NULL,
@@ -263,7 +277,8 @@ CREATE TABLE HarSete (
     constraint FK_HarSete_Stol foreign key (OmrådeNavn, RadNr, StolNr, SalID) references Stol(OmrådeNavn, RadNr, StolNr, SalID)
 );
 
---Oppretter HarTeaterstykke-Tabell
+--Oppretter HarTeaterstykke-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS HarTeaterstykke;
 CREATE TABLE HarTeaterstykke (
     TID INT NOT NULL,
     SalID INT NOT NULL,
@@ -272,7 +287,8 @@ CREATE TABLE HarTeaterstykke (
     constraint FK_HarTeaterstykke_SalID foreign key (SalID) references Sal(SalID)
 );
 
---Oppretter ErPerson-Tabell
+--Oppretter ErPerson-Tabell (dropper tabell hvis allerede finnes)
+DROP TABLE IF EXISTS PersonSkuespiller;
 CREATE TABLE PersonSkuespiller (
     PID INT NOT NULL,
     SKID INT NOT NULL,
@@ -280,28 +296,3 @@ CREATE TABLE PersonSkuespiller (
     constraint FK_PersonSkuespiller_PID foreign key (PID) references Person(PID),
     constraint FK_PersonSkuespiller_SKID foreign key (SKID) references Skuespiller(SKID)
 );
-
-
---Setter inn verdier for de ulike tabellene;
-
---Sal
-INSERT INTO Sal values (1, 524, 'Hovedscenen');
-INSERT INTO Sal values (1, 332, 'Gamle Scene');
-
---Teaterstykke
-INSERT INTO Teaterstykke values (1, 'Kongsemnene')
-INSERT INTO Teaterstykke values (2, 'Størst av alt er kjærligheten')
-
---Rolle
-INSERT INTO Rolle values (1, 'Haakon Haakonssønn')
-INSERT INTO Rolle values (2, 'Inga fra Vartjeg')
-INSERT INTO Rolle values (3, 'Skule Jarl')
-INSERT INTO Rolle values (4, 'Fru Ragnhild')
-INSERT INTO Rolle values (5, 'Margrete')
-INSERT INTO Rolle values (6, 'Sigrid')
-INSERT INTO Rolle values (7, 'Biskop Nicolas')
-INSERT INTO Rolle values (8, 'Gregorius Jonssønn')
-INSERT INTO Rolle values (9, 'Paal Flida')
-INSERT INTO Rolle values (10, 'Baard Bratte')
-INSERT INTO Rolle values (11, 'Jatgeir Skald')
-INSERT INTO Rolle values (12, 'Peter')
