@@ -56,32 +56,6 @@ def stol_info_alle(omraade_dict, salID):
     
     return behandlede_stoler
                 
-            
-                
-
-# Setter inn alle stoler i databasen
-import sqlite3 # Importerer sqlite3 for å kunne koble til databasen og legge til stoler
-
-# Setter opp nødvendige variabler for å legge til stoler i databasen - fra tekstfilene
-alle_stoler_hs = stol_info_alle(scan_alle_stoler(hovedscenen), 1)
-alle_stoler_gs = stol_info_alle(scan_alle_stoler(gamle_scene), 2)
-
-# Koble til SQLite-databasen 'test.db'
-conn = sqlite3.connect('./database/test.db')
-cursor = conn.cursor()
-
-# Utfører INSERT-spørringer for hver stol for hver scene (bytt ut 'stoler_kjopt_xx' med faktisk variabelnavn for valgt scene => hs: hovedscenen, gs: gamle_scene)
-for stol in alle_stoler_hs:
-    # Siden 'stoler_kjopt_xx' allerede er en tuple på formatet (StolNR, RadNR, SalID, OmraadeNavn), kan vi bruke den direkte på følgende måte:
-    cursor.execute('''INSERT INTO Stol VALUES (?, ?, ?, ?)''', stol)
-    
-# Lagrer endringene
-conn.commit()
-
-# Lukker forbindelsen med databasen.
-conn.close()
-
-print(f'Alle stoler fra oppgitte txt-fil er lagt til i databasen.')
 
 # Debugging 
 # stoler_hentet_fra_hs = scan_alle_stoler(hovedscenen)

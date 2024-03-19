@@ -2,8 +2,8 @@ import scan_seats as ss
 import sqlite3
 
 # Henter inn tekstfilene:
-gamle_scene = "./filesNeeded/gamle-scene.txt"
-hovedscenen = "./filesNeeded/hovedscenen.txt"
+gamle_scene = "../filesNeeded/gamle-scene.txt"
+hovedscenen = "../filesNeeded/hovedscenen.txt"
 
 # Koble til SQLite-databasen 'test.db'
 conn = sqlite3.connect('./database/test.db')
@@ -24,21 +24,23 @@ def add_bought_tickets(filnavn, salID):
                     stol_nummer_id_for_sal += 1
                     continue
                 # Legger kun til gyldige stoler ('0' eller '1')
-                stoler_solgt.append((stol_nummer_id_for_sal, rad_nr, salID, omraade_navn)) 
+                stoler_solgt.append((stol_nummer_id_for_sal, rad_nr, omraade_navn, salID)) 
                 stol_nummer_id_for_sal += 1
                 
             rad_nr += 1  # Oppdaterer radnummer for neste rad i området
 
+    for stol in stoler_solgt:
+        cursor.execute("INSERT INTO Stol VALUES (?, ?, ?, ?)", stol)
+        conn.commit()
+        conn.close()
+    print(f"Stolene i {filnavn} er lagt til i databasen")
     
-    return stoler_solgt
+# Legger inn kjøpte stoler i databasen - for hovedscenen (test)
+add_bought_tickets(hovedscenen, 1)
+     
 
 
 
 #Debugging:
-for stol in add_bought_tickets(hovedscenen, 1):
-    print(stol)
-
-    # for stol in stol_info:
-    #     cursor.execute("INSERT INTO Stol (StolID, Rad, SalID, Omraade) VALUES (?, ?, ?, ?)", stol)
-    #     conn.commit()
-    # print(f"Stolene i {filnavn} er lagt til i databasen")
+# for stol in add_bought_tickets(hovedscenen, 1):
+#     print(stol)
