@@ -1,4 +1,3 @@
-
 --Oppretter Billett-tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS Billetter;
 CREATE TABLE Billetter (
