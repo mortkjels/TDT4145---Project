@@ -15,11 +15,14 @@ conn = sqlite3.connect('./database/test.db')
 cursor = conn.cursor()
 
 # Utfører INSERT-spørringer for hver stol for hver scene (bytt ut 'stoler_kjopt_xx' med faktisk variabelnavn for valgt scene => hs: hovedscenen, gs: gamle_scene)
-for stol in alle_stoler_hs:
+for stol_hs in alle_stoler_hs:
     # Siden 'stoler_kjopt_xx' allerede er en tuple på formatet (StolNR, RadNR, SalID, OmraadeNavn), kan vi bruke den direkte på følgende måte:
-    cursor.execute('''INSERT INTO Stol VALUES (?, ?, ?, ?)''', stol)
+    cursor.execute('''INSERT INTO Stol VALUES (?, ?, ?, ?)''', stol_hs)
+    
+for stol_gs in alle_stoler_gs:
+    cursor.execute('''INSERT INTO Stol VALUES (?, ?, ?, ?)''', stol_gs)
 
 conn.commit() # Lagrer endringene
 conn.close() # Lukker forbindelsen med databasen.
 
-print(f'Alle stoler fra oppgitte txt-fil er lagt til i databasen.')
+print(f'Alle stoler fra oppgitte txt-filer er lagt til i databasen.')
