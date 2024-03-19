@@ -1,5 +1,3 @@
---SQL Script, Gruppe 27, Prosjekt TDT4145 VÅR 2024: Ole Marcus Aarnes, Morten Kjelsrud, Benjamin Færestrand
-
 --Oppretter Billett-tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS Billetter;
 CREATE TABLE Billetter (
@@ -287,14 +285,4 @@ CREATE TABLE HarTeaterstykke (
     constraint PK_HarTeaterstykke primary key (TID, SalID),
     constraint FK_HarTeaterstykke_TID foreign key (TID) references Teaterstykke(TID),
     constraint FK_HarTeaterstykke_SalID foreign key (SalID) references Sal(SalID)
-);
-
---Oppretter TeaterStykkeBillettType-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE IF EXISTS TeaterStykkeBillettType;
-CREATE TABLE TeaterStykkeBillettType (
-    TID INT NOT NULL,
-    BTID INT NOT NULL,
-    constraint PK_TeaterStykkeBillettType primary key (TID, BTID),
-    constraint FK_TeaterStykkeBillettType_TID foreign key (TID) references Teaterstykke(TID),
-    constraint FK_TeaterStykkeBillettType_BTID foreign key (BTID) references BillettType(BTID)
 );

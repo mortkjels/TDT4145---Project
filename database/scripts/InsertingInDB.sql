@@ -1,7 +1,5 @@
 -- Script til å legge til de nødvendige verdiene inn i databasen.
 
---Setter inn verdier for de ulike tabellene;
-
 --Innsetting av verdier for Sal
 INSERT INTO Sal VALUES
 (1, 524, 'Hovedscenen'),
@@ -12,7 +10,7 @@ INSERT INTO Teaterstykke VALUES
 (1, 'Kongsemnene'),
 (2, 'Størst av alt er kjærligheten');
 
---Innsetting av verdier for ulike typer Ansatt:
+--Innsetting av verdier for ulike typer Ansatt
 INSERT INTO Ansatt VALUES
 (1, "Fast"),
 (2, "Midlertidig"),
@@ -64,7 +62,7 @@ INSERT INTO Rolle VALUES
 (20, 'Natalie Grøndahl Tangen'),
 (21, 'Åsmund Flaten');
 
---Innsetting av verdier for Skuespiller, Skal vi legge til rolle id for hver skuesspiller? Skal vi legge til teaterstykke til en skuespiller?
+--Innsetting av verdier for Skuespiller
 INSERT INTO Skuespiller VALUES 
 (1, 'Arturo Scotti'),
 (2, 'Ingunn Beate Strige Øyen'),
@@ -89,7 +87,7 @@ INSERT INTO Skuespiller VALUES
 (21, 'Emma Caroline Deichmann');
 
 
---BillettType, forskjellige billetpriser for forestillinger. fremmedid mot det?
+--Innsetting av verdier for BillettType
 INSERT INTO BillettType VALUES
 (1, 'Ordinær',450,1),
 (2, 'Student', 280,1),
@@ -103,7 +101,7 @@ INSERT INTO BillettType VALUES
 (10, 'Gruppe 10 Honnør',270,2),
 (11, 'Barn', 220, 2);
 
- -- Ulike typer Oppgave:
+ --Innsetting av verdier for ulike typer Oppgaver:
  INSERT INTO Oppgaver VALUES
  (1, "AnsvarligDirektor"),
  (2, "Regissor"),
@@ -115,7 +113,7 @@ INSERT INTO BillettType VALUES
  (8, "Dramaturg"),
  (9, "Sufflor");
 
- -- Innlegging av de ulike personene for teateret, som ikke er skuesspillere:
+ --Innsetting av verdier for Personer, som ikke er skuesspillere. Definert Person som en egen tabell for de som ikke er skuesspillere. 
  INSERT INTO Person VALUES
  -- Kunsternisk Lag for Kongsemnene:
  (1, "Yury Butusov", "yurbut@tt.no"), -- Endre på AID og OpID attributter her burde være tekstrenger mtp. relasjostabell....
@@ -129,8 +127,8 @@ INSERT INTO BillettType VALUES
  (8, "Magnus Mikaelsen", "magmik@tt.no"),
  (9, "Kristoffer Spender", "krispe@tt.no");
 
- -- Innlegging av de ulike kulissene, valgt forestillinger fremfor teaterstykke på relasjon hvis det går i stykker.
- --Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
+ -- Innsetting av verdier av de ulike kulissene, valgt forestillinger fremfor teaterstykke på relasjon for eventuelle endringer for fremtidige forestillinger.
+ -- Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
     INSERT INTO Kulisser VALUES
     --KE
     (1, "Sverd"),
@@ -151,7 +149,7 @@ INSERT INTO BillettType VALUES
     (14, "Flomlys"),
     (15, "Scenerøyk");
 
- -- Oppkobling av verdier Person - Ansatt
+ -- Oppkobling av verdier AnsattSom
  INSERT INTO AnsattSom VALUES
  -- KE
  (1, 1),
@@ -165,7 +163,7 @@ INSERT INTO BillettType VALUES
  (8, 2),
  (9, 5);
 
-  -- Oppkobling av verdier Person - Oppgaver
+  -- Oppkobling av verdier HarOppgave
  INSERT INTO HarOppgave VALUES
  -- KE
  (1, 1),
@@ -189,7 +187,7 @@ INSERT INTO Akt VALUES
 (5,5),
 (6,6);
 
---Oppkobling av verdier HarAkt, Antar at SAEK har kun en akt, siden det ikke står noe på nettet. 
+--Oppkobling av verdier HarAkt, Antar at SAAEK har kun en akt, siden det ikke står noe på nettet. 
 INSERT INTO HarAkt VALUES
 --KE
 (1,1),
@@ -436,7 +434,6 @@ INSERT INTO HarForestilling VALUES
 (11,2);
 
 
--- --Python?
 -- INSERT INTO Billetter (BID,FID, BTID, StolID) VALUES
 
 
