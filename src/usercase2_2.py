@@ -1,6 +1,6 @@
 # Setter inn alle stoler i databasen
 
-import scan_seats as ss # Importer scan_seats for å kunne bruke funksjonene som leser inn stoler fra tekstfilene
+import usercase2_1 as ss # Importer scan_seats for å kunne bruke funksjonene som leser inn stoler fra tekstfilene
 import sqlite3 # Importerer sqlite3 for å kunne koble til databasen og legge til stoler
 
 hovedscenen = "../filesNeeded/hovedscenen.txt"

@@ -22,7 +22,7 @@ CREATE TABLE Forestillinger (
     FID INTEGER,
     Dato DATE,
     Klokkeslett TIME,
-    navn VARCHAR(50),
+    Navn VARCHAR(50),
     constraint FID_pk primary key (FID)
     );
 
@@ -176,17 +176,6 @@ CREATE TABLE HarAkt (
     constraint FK_HarAkt_AKID foreign key (AKID) references Akt(AKID)
 );
 
---Oppretter HarStol-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE IF EXISTS HarStol;
--- CREATE TABLE HarStol (
---     OmrådeNavn VARCHAR(50) NOT NULL,
---     RadNr INT NOT NULL,
---     StolNr INT NOT NULL,
---     SalID INT NOT NULL,
---     constraint PK_HarStol primary key (OmrådeNavn, RadNr, StolNr, SalID),
---     constraint FK_HarStol_SalID foreign key (SalID) references Sal(SalID)
--- );
-
 --Oppretter ForestillingI-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS ForestillingI;
 CREATE TABLE ForestillingI (
@@ -245,40 +234,6 @@ CREATE TABLE DeltarIAkt (
     constraint PK_DeltarIAkt primary key (AKID, RID),
     constraint FK_DeltarIAkt_RID foreign key (RID) references Rolle(RID),
     constraint FK_DeltarIAkt_AKID foreign key (AKID) references Akt(AKID)
-);
-
---Oppretter Billettkjoep-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE IF EXISTS BillettKjoep;
--- CREATE TABLE BillettKjoep (
---     BID INT NOT NULL,
---     KID INT NOT NULL,
---     Dato DATE NOT NULL,
---     Tid TIME NOT NULL,
---     constraint FK_BillettKjoep_BID foreign key (BID) references Billett(BID),
---     constraint FK_BillettKjoep_KID foreign key (KID) references Kundeprofil(KID)
--- );
-
---Oppretter Typene-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE IF EXISTS Typene;
--- CREATE TABLE Typene (
---     BTID INT NOT NULL,
---     BID INT NOT NULL,
---     constraint PK_Typene primary key (BTID),
---     constraint FK_Typene_BID foreign key (BID) references Billett(BID),
---     constraint FK_Typene_BTID foreign key (BTID) references BillettType(BTID)
--- );
-
---Oppretter HarSete-Tabell (dropper tabell hvis allerede finnes)
-DROP TABLE IF EXISTS HarSete;
-CREATE TABLE HarSete (
-    BID INT NOT NULL,
-    OmrådeNavn VARCHAR(50) NOT NULL,
-    RadNr INT NOT NULL,
-    StolNr INT NOT NULL,
-    SalID INT NOT NULL,
-    constraint PK_HarSete primary key (BID),
-    constraint FK_HarSete_BID foreign key (BID) references Billetter(BID),
-    constraint FK_HarSete_Stol foreign key (OmrådeNavn, RadNr, StolNr, SalID) references Stol(OmrådeNavn, RadNr, StolNr, SalID)
 );
 
 --Oppretter HarTeaterstykke-Tabell (dropper tabell hvis allerede finnes)

@@ -1,4 +1,4 @@
---Vår løsning for Usecase 5:
+--Vår løsning for Usercase 5:
 SELECT DISTINCT Skuespiller.navn as SkuespillerNavn, Rolle.navn as RolleNavn, Teaterstykke.navn as TeaterstykkeNavn
 FROM Teaterstykke 
 INNER JOIN HarAkt ON Teaterstykke.TID = HarAkt.TID
