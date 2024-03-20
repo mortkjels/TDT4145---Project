@@ -1,3 +1,5 @@
+Oppskrift for kjøring av vår database:
+
 1. Kjør CreatingDB.sql ved sqlite3 i terminalen på følgende måte: 
 "cd src"
 "cd database"
@@ -6,10 +8,26 @@
 2. Kjør deretter InsertingInDB.sql følgende: 
 "sqlite3 TrondelagTeater.db < scripts/InsertingInDB.sql"
 
-3.
+3. Kjør nå følgende kommando:
 "cd .."
-Kjør deretter scan_seats:
-"python3 scan_seats.py"
+Kjør deretter usercase2_1.py:
+"python3 usercase2_1.py"
 
-4. Kjør deretter add_all_seats.py følgende:
-"python3 add_all_seats.py"
+4. Kjør deretter usercase2_2.py følgende:
+"python3 usercase2_2.py"
+
+5. Kjør deretter usercase2_3.py følgende:
+"python3 usercase2_3.py"
+
+6. Kjør deretter usercase3.py følgende:
+"python3 usercase3.py"
+
+7. Kjør deretter usercase4.py følgende:
+"python3 usercase4.py"
+
+8. Kjør nå følgende kommando:
+"cd database"
+"sqlite3 TrondelagTeater.db < scripts/usercase5.sql"
+
+9. Kjør nå følgende kommando:
+"sqlite3 TrondelagTeater.db < scripts/usercase6.sql"
