@@ -3,13 +3,18 @@
 DROP TABLE IF EXISTS Billetter;
 CREATE TABLE Billetter (
     BID INTEGER,
+    stolNR INTEGER,
+    radNR INTEGER,
     FID INTEGER,
     BTID INTEGER,
-    StolID INTEGER,
-    constraint BID_pk primary key (BID),
+    SalID INTEGER,
+    OmraadeNavn VARCHAR(50),
+    KID INTEGER,
+    constraint PK_Billetter primary key (BID, SalID),
     constraint forestilling_fk foreign key (FID) references Forestillinger(FID),
     constraint billettype_fk foreign key (BTID) references BillettType(BTID),
-    constraint stolID_fk foreign key (StolID) references Stol(StolID)
+    constraint salID_fk foreign key (SalID) references Sal(SalID),
+    constraint KID_fk foreign key (KID) references Kundeprofil(KID)
     );
 
 --Oppretter Forestillinger-tabell (dropper tabell hvis allerede finnes)
@@ -174,14 +179,14 @@ CREATE TABLE HarAkt (
 
 --Oppretter HarStol-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS HarStol;
-CREATE TABLE HarStol (
-    OmrådeNavn VARCHAR(50) NOT NULL,
-    RadNr INT NOT NULL,
-    StolNr INT NOT NULL,
-    SalID INT NOT NULL,
-    constraint PK_HarStol primary key (OmrådeNavn, RadNr, StolNr, SalID),
-    constraint FK_HarStol_SalID foreign key (SalID) references Sal(SalID)
-);
+-- CREATE TABLE HarStol (
+--     OmrådeNavn VARCHAR(50) NOT NULL,
+--     RadNr INT NOT NULL,
+--     StolNr INT NOT NULL,
+--     SalID INT NOT NULL,
+--     constraint PK_HarStol primary key (OmrådeNavn, RadNr, StolNr, SalID),
+--     constraint FK_HarStol_SalID foreign key (SalID) references Sal(SalID)
+-- );
 
 --Oppretter ForestillingI-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS ForestillingI;
@@ -206,9 +211,9 @@ CREATE TABLE HarForestilling (
 --Oppretter TilForestilling-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS TilForestilling;
 CREATE TABLE TilForestilling (
-    BID INTEGER NOT NULL,
+    BID INTEGER,
     FID INTEGER,
-    constraint PK_TilForestilling primary key (BID),
+    constraint PK_TilForestilling primary key (BID, FID),
     constraint FK_TilForestilling_FID foreign key (FID) references Forestillinger(FID),
     constraint FK_TilForestilling_BID foreign key (BID) references Billetter(BID)
 );
@@ -245,24 +250,24 @@ CREATE TABLE DeltarIAkt (
 
 --Oppretter Billettkjoep-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS BillettKjoep;
-CREATE TABLE BillettKjoep (
-    BID INT NOT NULL,
-    KID INT NOT NULL,
-    Dato DATE NOT NULL,
-    Tid TIME NOT NULL,
-    constraint FK_BillettKjoep_BID foreign key (BID) references Billett(BID),
-    constraint FK_BillettKjoep_KID foreign key (KID) references Kundeprofil(KID)
-);
+-- CREATE TABLE BillettKjoep (
+--     BID INT NOT NULL,
+--     KID INT NOT NULL,
+--     Dato DATE NOT NULL,
+--     Tid TIME NOT NULL,
+--     constraint FK_BillettKjoep_BID foreign key (BID) references Billett(BID),
+--     constraint FK_BillettKjoep_KID foreign key (KID) references Kundeprofil(KID)
+-- );
 
 --Oppretter Typene-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS Typene;
-CREATE TABLE Typene (
-    BTID INT NOT NULL,
-    BID INT NOT NULL,
-    constraint PK_Typene primary key (BTID),
-    constraint FK_Typene_BID foreign key (BID) references Billett(BID),
-    constraint FK_Typene_BTID foreign key (BTID) references BillettType(BTID)
-);
+-- CREATE TABLE Typene (
+--     BTID INT NOT NULL,
+--     BID INT NOT NULL,
+--     constraint PK_Typene primary key (BTID),
+--     constraint FK_Typene_BID foreign key (BID) references Billett(BID),
+--     constraint FK_Typene_BTID foreign key (BTID) references BillettType(BTID)
+-- );
 
 --Oppretter HarSete-Tabell (dropper tabell hvis allerede finnes)
 DROP TABLE IF EXISTS HarSete;
