@@ -9,7 +9,7 @@ Endringer fra DB1.sql til CreatingDB.sql:
 7. Samme gjelder HarForestilling der vi la til FID.
 8. La også til RID for DeltarIAkt, dette gjør at vi enklere kan skille hvilke roller som deltar i forskjellige akter. 
 9. Fjernet PersonSkuespiller, grunnet at vi definerte Personer som personer som ikke er skuespillere.
- 
+10. Forenklet databasen ift HarStol, Typene og BillettKjoep siden den ikke er nødvendige for en operativ database.  
 
 
 
