@@ -1,5 +1,14 @@
 1. Kjør CreatingDB.sql ved sqlite3 i terminalen på følgende måte: 
-"sqlite3 TrondelagTeater.db < TDT4145---Project/database/scripts/CreatingDB.sql"
+"cd src"
+"cd database"
+"sqlite3 TrondelagTeater.db < scripts/CreatingDB.sql"
 
 2. Kjør deretter InsertingInDB.sql følgende: 
-"sqlite3 TrondelagTeater.db < TDT4145---Project/database/scripts/InsertingInDB.sql"
+"sqlite3 TrondelagTeater.db < scripts/InsertingInDB.sql"
+
+3.
+Kjør deretter scan_seats:
+"python3 scan_seats.py"
+
+4. Kjør deretter add_all_seats.py følgende:
+"python3 add_all_seats.py"
