@@ -389,7 +389,15 @@ INSERT INTO DeltarIAkt VALUES
 (4,13),
 (5,13),
 
-(4,14);
+(4,14),
+
+(6,15),
+(6,16),
+(6,17),
+(6,18),
+(6,19),
+(6,20),
+(6,21);
 
 --Innsetting av verdier for Deltar
 INSERT INTO Deltar VALUES

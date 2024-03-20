@@ -9,7 +9,7 @@ CREATE TABLE Billetter (
     SalID INTEGER,
     OmraadeNavn VARCHAR(50),
     KID INTEGER,
-    constraint BID_pk primary key (BID),
+    constraint BID_pk primary key (BID, SalID),
     constraint forestilling_fk foreign key (FID) references Forestillinger(FID),
     constraint billettype_fk foreign key (BTID) references BillettType(BTID),
     constraint salID_fk foreign key (SalID) references Sal(SalID),
