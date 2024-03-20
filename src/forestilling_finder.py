@@ -39,7 +39,7 @@ def forestilling_finder(dato: str):
          print(f"Ingen forestillinger funnet for {dato}")
     #Skriver ut resultatet på en 'finere' måte:
     for forestilling in resultat:
-        print(f'Forestilling: {forestilling[0]}, Dato: {forestilling[1]}, Klokkeslett: {forestilling[2]}, SalNummer: {forestilling[3]}, AntallBilletterSolgt: {forestilling[4]}')
+        print(f'Forestilling: {forestilling[0]}, Dato: {forestilling[1]}, Klokkeslett: {forestilling[2]}, SalNummer: {forestilling[3]}, SalNavn: {forestilling[4]}, AntallBilletterSolgt: {forestilling[5]}')
     conn.close()
     
 
