@@ -6,7 +6,9 @@ hvor det ikke er solgt noen billetter.
 """
 import sqlite3
 
-# Forutsetter at vi kjører 1. CreatingDB.sql, 2. InsertingInDB.sql og til slutt  'add_booked_seats.py' for å legge til stoler i databasen som er booka, samt all annen data i forhold til vår løsning.
+# TODO: Må få knyttet joinen opp mot kundeprofilen og billettkjøpene - da den nå henter og teller alle stolene - som er feil
+
+# Forutsetter at vi kjører 1. CreatingDB.sql, 2. InsertingInDB.sql 
 
 # Spørring som kobler opp all dataen sammen: SELECT Forestillinger.navn AS Forestilling, Forestillinger.Dato as Dato, Forestillinger.Klokkeslett as Klokken, Sal.SalID as SalNummer, COUNT(Stol.StolNr) AS AntallBilletterSolgt FROM Forestillinger INNER JOIN ForestillingI ON Forestillinger.FID = ForestillingI.FID INNER JOIN Sal ON ForestillingI.SalID = Sal.SalID INNER JOIN Stol ON Sal.SalID = Stol.SalID WHERE Dato = '< dato >' GROUP BY Dato, Klokken, SalNummer; => finner antall billetter solgt for en spesifikk dato ('2024-02-03') finner begge.
 
@@ -22,6 +24,7 @@ def forestilling_finder(dato: str):
                 Forestillinger.Dato as Dato,
                 Forestillinger.Klokkeslett as Klokken,
                 Sal.SalID as SalNummer,
+                Sal.navn as SalNavn,
                 COUNT(Stol.StolNr) AS AntallBilletterSolgt 
               FROM Forestillinger 
               INNER JOIN ForestillingI ON Forestillinger.FID = ForestillingI.FID 
@@ -41,4 +44,4 @@ def forestilling_finder(dato: str):
     
 
 # Tester for en dato:
-forestilling_finder('2024-02-03') # Skal returnere en liste med forestillinger som finnes på denne datoen og lister opp hvor mange billetter (dvs. stoler) som er solgt.
+forestilling_finder('2024-02-06') # Skal returnere en liste med forestillinger som finnes på denne datoen og lister opp hvor mange billetter (dvs. stoler) som er solgt.
