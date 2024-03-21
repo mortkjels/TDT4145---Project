@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect("src/database/TrondelagTeater.db")
 cursor = conn.cursor()
 
-#SETTER OPP TABELLER
+#Setter opp tabeller
 
 cursor.execute("DROP TABLE IF EXISTS Akt")
 cursor.execute("""
@@ -244,7 +244,7 @@ cursor.executemany("INSERT INTO DeltarIAkt VALUES (?, ?)", deltar_i_akt_verdier)
 
 conn.commit() #Comitter alle verdier som er lagt til i tabellen
 
-#HER ER FUNKSJONEN SOM FINNER MEDSKUESPILLERE
+#Her er funksjonen som finner medspillere til skuespilleren
 
 def finn_medspillere(skuespiller_navn):
     conn = sqlite3.connect("src/database/TrondelagTeater.db")
@@ -300,7 +300,7 @@ def finn_medspillere(skuespiller_navn):
     conn.close()
 
 #Test av funksjon
-skuespiller_navn = "Emma Caroline Deichmann" #VELG SKUESPILLER HER
+skuespiller_navn = "Emma Caroline Deichmann" 
 finn_medspillere(skuespiller_navn)
 
 
