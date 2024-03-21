@@ -185,7 +185,7 @@ INSERT INTO Akt VALUES
 (3,3),
 (4,4),
 (5,5),
-(6,6);
+(6,1);
 
 --Oppkobling av verdier HarAkt, Antar at SAAEK har kun en akt, siden det ikke står noe på nettet. 
 INSERT INTO HarAkt VALUES
