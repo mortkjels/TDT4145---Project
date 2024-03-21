@@ -1,0 +1,38 @@
+Oppskrift for kjøring av vår database fra terminalen:
+
+1. Kjør schema.sql ved sqlite3 i terminalen på følgende måte: 
+sqlite3 src/database/TrondelagTeater.db < src/schema.sql
+
+2. Kjør deretter insertDB.sql følgende: 
+sqlite3 src/database/TrondelagTeater.db < src/insertDB.sql
+
+3. Kjør nå følgende kommando:
+Kjør deretter usercase2_1.py:
+python3 src/usercase2_1.py
+
+4. Kjør deretter usercase2_2.py følgende:
+python3 src/usercase2_2.py
+
+5. Kjør deretter usercase2_3.py følgende:
+python3 src/usercase2_3.py
+
+6. Kjør deretter usercase3.py følgende:
+python3 src/usercase3.py
+
+Ønsker du å endre en eller flere parametere, kan du gjøre det i linje 64,65,66 i src/usercase3.py 
+
+7. Kjør deretter usercase4.py følgende:
+python3 src/usercase4.py
+
+Ønsker du å endre en parameter, kan du gjøre det i linje 43 i src/usercase4.py 
+
+8. Kjør nå følgende kommando:
+sqlite3 src/database/TrondelagTeater.db < src/usercase5.sql
+
+9. Kjør nå følgende kommando:
+sqlite3 src/database/TrondelagTeater.db < src/usercase6.sql
+
+10. Kjør nå usercase7.py følgende:
+python3 src/usercase7.py
+
+Ønsker du å endre en parameter, kan du gjøre det i linje 61 i src/usercase7.py 

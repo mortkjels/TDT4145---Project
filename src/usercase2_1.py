@@ -1,13 +1,8 @@
-# Deloppgave 2: Skript for å lese inn stoler fra tekstfiler og legge dem til i databasen
-
-# TODO: Implementere å hoppe over stoler merket med 'x' i tekstfilene - good!
-# TODO: Fixe bug, hvor radene må reverseres slik at rad 1 er i bunn av tekstfilen og rad n er øverst - good!
-
-# TODO: Implementere boolean for å sjekke om stol allerede er kjøpt, og evt. ikke legge til i databasen - done!
+# Usercase 2: Skript for å lese inn stoler fra tekstfiler og legge dem til i databasen
 
 # Henter filene:
-gamle_scene = "../filesNeeded/gamle-scene.txt"
-hovedscenen = "../filesNeeded/hovedscenen.txt"
+gamle_scene = "filesNeeded/gamle-scene.txt"
+hovedscenen = "filesNeeded/hovedscenen.txt"
 
 # Funksjon som håndterer lesing av stoler fra tekstfilene og lagrer dem i en dictionary
 def scan_alle_stoler(filnavn):
@@ -55,18 +50,3 @@ def stol_info_alle(omraade_dict, salID):
 
     
     return behandlede_stoler
-                
-
-# Debugging 
-# stoler_hentet_fra_hs = scan_alle_stoler(hovedscenen)
-# stoler_til_database_hs = stol_info_alle(stoler_hentet_fra_hs, 1)
-# print("Printer kjøpte stoler for Hovedscenen:\n")
-# for stol in stoler_til_database_hs:
-#     print(stol)
-# print("\n")
-# stoler_hentet_fra_gs = scan_alle_stoler(gamle_scene)
-# stoler_til_database_gs = stol_info_alle(stoler_hentet_fra_gs, 2)
-# print("Printer kjøpte stoler for Gamle Scenen:\n")
-# for stol in stoler_til_database_gs:
-#     print(stol)
-# print(stoler_til_database_gs)
