@@ -1,9 +1,0 @@
-Antagelser for Innsetting av verdier i insertDB;
-
-1. Person, legger inn personer som ikke er skuespillere i denne entiteten. Person er definert som ikke skuespillere
-2. HarRolle og Skuesspiller, antar at for Rolle i SAAEK er kun skuesspiller navn og derfor er de like. Fant ikke noe mer angående dette på TT sine sider. 
-3. En Skuespiller kan spille flere roller.
-4. Antar at Størst av alt er kjærligheten har kun 1 akt, siden det ikke står noe på TT sine sider. 
-5. Skuespillere for Størst av alt er kjærligheten har samme rollenavn som skuespillernavn, grunnen til det er at det ikke sto noe på TT sine sider. 
-6. Valgt forestillinger fremfor teaterstykke på relasjon når vi legger til verdier for kulisser for eventuelle endringer for fremtidige forestillinger.
-7. Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
