@@ -2,6 +2,6 @@
 
 Prosjekt laget av Gruppe 27:
 
-Morten Kjelsrud
-Ole Marcus Aarnes
+Morten Kjelsrud,
+Ole Marcus Aarnes,
 Benjamin Færestrand
