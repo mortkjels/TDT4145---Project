@@ -15,7 +15,6 @@ def add_bought_tickets(filnavn, salID, valgte_seter, valgt_type):
 
     cursor.execute("SELECT Pris FROM BillettType WHERE TID = ? AND Gruppe = ?", (salID, valgt_type,))
     p_type = cursor.fetchone()[0]
-    print(p_type)
 
     for omraade_navn in reversed(list(stoler.keys())):  # Reverserer listen for å behandle områdene i riktig rekkefølge - i forhold til scenen.
         rad_nr = 1  # Starter radnummereringen for hvert nytt område
