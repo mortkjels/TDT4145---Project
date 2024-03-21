@@ -38,7 +38,6 @@ def forestilling_finder(dato: str):
               #Solgte billetter: {forestilling[5]}
               ''')
     conn.close()
-    
 
-# Kjøring av usercase 4:
-forestilling_finder("2024-02-03") 
+# Ønsker du å endre en parameter, kan du gjøre det her. 
+forestilling_finder("2024-02-03") #Her kan du endre datoen for å se andre forestillinger for en annen dato.

@@ -57,8 +57,8 @@ def finn_medspillere(skuespiller_navn):
 
     conn.close()
 
-#Test av funksjon
-skuespiller_navn = "Emma Caroline Deichmann" 
+#Ønsker du å endre en parameter, kan du gjøre det her. 
+skuespiller_navn = "Emma Caroline Deichmann" #Her kan du endre skuespilleren du vil finne medspillere til
 finn_medspillere(skuespiller_navn)
 
 

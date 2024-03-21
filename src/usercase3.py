@@ -2,9 +2,14 @@ import usercase2_1 as ss
 import sqlite3
 
 gamle_scene = "filesNeeded/gamle-scene.txt"
+hoved_scene = "filesNeeded/hovedscenen.txt"
 
 # Funksjon håndterer stoler som er kjøpt og legger dem inn i databasen
-def add_bought_tickets(filnavn, salID, valgte_seter, valgt_type):
+def add_bought_tickets(salID, valgte_seter, valgt_type):
+    if salID == 1:
+        filnavn = hoved_scene
+    elif salID == 2:
+        filnavn = gamle_scene
     conn = sqlite3.connect('src/database/TrondelagTeater.db')
     cursor = conn.cursor()
     stoler = ss.scan_alle_stoler(filnavn)
@@ -53,5 +58,9 @@ def add_bought_tickets(filnavn, salID, valgte_seter, valgt_type):
     else:
         print(f"Valgt ut {valgte_seter} seter på rad: {valgt_rad}, Område: {valgt_omr}. Prisen blir {valgte_seter*p_type}kr")
     conn.close()
-# Legger inn kjøpte stoler i databasen - for hovedscenen (test)
-add_bought_tickets(gamle_scene, 2, 9, 'Ordinær')
+
+# Ønsker du å endre en parameter, kan du gjøre det her. 
+add_bought_tickets(
+    2, #SalID for utvalgt sal, 1 for gamle scene og 2 for hovedscenen
+    9 , #Antall seter
+    'Ordinær') #Valgt gruppe for billett
