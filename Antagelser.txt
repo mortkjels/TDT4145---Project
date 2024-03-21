@@ -1,4 +1,4 @@
-Antagelser for Innsetting av verdier i InsertingInDB;
+Antagelser for Innsetting av verdier i insertDB;
 
 1. Person, legger inn personer som ikke er skuespillere i denne entiteten. Person er definert som ikke skuespillere
 2. HarRolle og Skuesspiller, antar at for Rolle i SAAEK er kun skuesspiller navn og derfor er de like. Fant ikke noe mer angående dette på TT sine sider. 
