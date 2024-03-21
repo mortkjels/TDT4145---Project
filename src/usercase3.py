@@ -1,10 +1,10 @@
 import usercase2_1 as ss
 import sqlite3
 
-gamle_scene = "../filesNeeded/gamle-scene.txt"
+gamle_scene = "filesNeeded/gamle-scene.txt"
 
-# Koble til SQLite-databasen 'Teater.db'
-conn = sqlite3.connect('./database/Teater.db')
+# Koble til SQLite-databasen 'TrondelagTeater.db'
+conn = sqlite3.connect('src/database/TrondelagTeater.db')
 cursor = conn.cursor()
 
 # Forespørsel for å slette tabellen hvis den eksisterer

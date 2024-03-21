@@ -3,18 +3,12 @@ import sqlite3
 import random as r
 
 # Henter inn tekstfilene:
-gamle_scene = "../filesNeeded/gamle-scene.txt"
-hovedscenen = "../filesNeeded/hovedscenen.txt"
+gamle_scene = "filesNeeded/gamle-scene.txt"
+hovedscenen = "filesNeeded/hovedscenen.txt"
 
-# Koble til SQLite-databasen 'test.db'
-conn = sqlite3.connect('./database/Teater.db')
+# Koble til SQLite-databasen 'TrondelagTeater.db'
+conn = sqlite3.connect('src/database/TrondelagTeater.db')
 cursor = conn.cursor()
-
-# Randomiser BTID sal 1: 1 til 5
-# Randomiser BTID sal 2: 6 til 11
-# Randomiser KID: 1 til 5
-# Mulige FID'er for sal 1: 3
-# Mulige FID'er for sal 2: 6
 
 # Funksjon håndterer stoler som er kjøpt og legger dem inn i databasen
 def add_bought_tickets(filnavn, salID):
@@ -40,8 +34,6 @@ def add_bought_tickets(filnavn, salID):
                     stoler_solgt.append((billettID, stol_nummer_id_for_sal, rad_nr, 6, r.randint(6,11), salID, omraade_navn, r.randint(1,5)))
                     billettID += 1
                     stol_nummer_id_for_sal += 1
-                # stoler_solgt.append((stol_nummer_id_for_sal, rad_nr, salID, omraade_navn)) 
-                # stol_nummer_id_for_sal += 1
                 
             rad_nr += 1  # Oppdaterer radnummer for neste rad i området
 
@@ -56,9 +48,3 @@ add_bought_tickets(hovedscenen, 1)
 add_bought_tickets(gamle_scene, 2)
 
 conn.close()     
-
-
-
-#Debugging:
-# for stol in add_bought_tickets(hovedscenen, 1):
-#     print(stol)

@@ -1,33 +1,32 @@
-Oppskrift for kjøring av vår database:
+Oppskrift for kjøring av vår database fra terminalen:
 
-1. Kjør CreatingDB.sql ved sqlite3 i terminalen på følgende måte: 
-"cd src"
-"cd database"
-"sqlite3 TrondelagTeater.db < scripts/CreatingDB.sql"
+1. Kjør schema.sql ved sqlite3 i terminalen på følgende måte: 
+"sqlite3 src/database/TrondelagTeater.db < src/schema.sql"
 
-2. Kjør deretter InsertingInDB.sql følgende: 
-"sqlite3 TrondelagTeater.db < scripts/InsertingInDB.sql"
+2. Kjør deretter insertDB.sql følgende: 
+"sqlite3 src/database/TrondelagTeater.db < src/insertDB.sql"
 
 3. Kjør nå følgende kommando:
-"cd .."
 Kjør deretter usercase2_1.py:
-"python3 usercase2_1.py"
+"python3 src/usercase2_1.py"
 
 4. Kjør deretter usercase2_2.py følgende:
-"python3 usercase2_2.py"
+"python3 src/usercase2_2.py"
 
 5. Kjør deretter usercase2_3.py følgende:
-"python3 usercase2_3.py"
+"python3 src/usercase2_3.py"
 
 6. Kjør deretter usercase3.py følgende:
-"python3 usercase3.py"
+"python3 src/usercase3.py"
 
 7. Kjør deretter usercase4.py følgende:
-"python3 usercase4.py"
+"python3 src/usercase4.py"
 
 8. Kjør nå følgende kommando:
-"cd database"
-"sqlite3 TrondelagTeater.db < scripts/usercase5.sql"
+"sqlite3 src/database/TrondelagTeater.db < src/usercase5.sql"
 
 9. Kjør nå følgende kommando:
-"sqlite3 TrondelagTeater.db < scripts/usercase6.sql"
+"sqlite3 src/database/TrondelagTeater.db < src/usercase6.sql"
+
+10. Kjør nå usercase7.py følgende:
+"python3 src/usercase7.py"

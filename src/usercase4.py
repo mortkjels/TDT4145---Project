@@ -1,19 +1,8 @@
-"""
-Implementere et Pythonprogram (med bruk av SQL) som tar inn
-en dato og skriver ut hvilke forestillinger som finnes på denne datoen og lister
-opp hvor mange billetter (dvs. stoler) som er solgt. Ta også med forestillinger
-hvor det ikke er solgt noen billetter.
-"""
-
 import sqlite3
 
-# Forutsetter at vi kjører 1. CreatingDB.sql, 2. InsertingInDB.sql 3. add_all_seats.py og 4. add_booked_seats.py før vi kjører denne filen. 
-
-
 # Definere funksjonen som tar inn en dato som input => antar at datoen er på formatet og eksisterer i databasen.
-
 def forestilling_finder(dato: str):
-    conn = sqlite3.connect('database/Teater.db')
+    conn = sqlite3.connect('src/database/TrondelagTeater.db')
     c = conn.cursor()
     
     # SQL-spørring: henter ut forestillinger som finnes på en spesifikk dato og lister opp hvor mange billetter (dvs. stoler) som er solgt.
@@ -39,7 +28,6 @@ def forestilling_finder(dato: str):
     if not resultat:
          print(f"Ingen forestillinger funnet for {dato}")
     #Skriver ut resultatet på en 'finere' måte:
-    #Skriver ut resultatet på en 'finere' måte:
     for forestilling in resultat:
         print(f'''
               Forestilling: {forestilling[0]} 
@@ -52,5 +40,5 @@ def forestilling_finder(dato: str):
     conn.close()
     
 
-# Kjøring av brukerhistorie 4:
+# Kjøring av usercase 4:
 forestilling_finder("2024-02-03") 

@@ -5,3 +5,5 @@ Antagelser for Innsetting av verdier i InsertingInDB;
 3. En Skuespiller kan spille flere roller.
 4. Antar at Størst av alt er kjærligheten har kun 1 akt, siden det ikke står noe på TT sine sider. 
 5. Skuespillere for Størst av alt er kjærligheten har samme rollenavn som skuespillernavn, grunnen til det er at det ikke sto noe på TT sine sider. 
+6. Valgt forestillinger fremfor teaterstykke på relasjon når vi legger til verdier for kulisser for eventuelle endringer for fremtidige forestillinger.
+7. Baserer kulisser ut ifra bildene gitt på Trøndelag Teater sin nettside.
