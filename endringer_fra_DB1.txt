@@ -1,4 +1,4 @@
-Endringer fra DB1.sql til CreatingDB.sql:
+Endringer fra DB1.sql til schema.sql:
 
 1. Endret drop strukturen for å ha det mer oversiktelig. Vi synes det var bedre å gjøre det slik.
 2. Endret strukturen på hvordan vi ville lage tabellen med Forestillinger. Fjernet fremmednøkkel fra tabellen siden det var ikke nødvendig for at det skulle fungere slik vi ville.
