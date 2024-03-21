@@ -1,4 +1,4 @@
-Noen tips til prosjektet
+Noen tips til prosjektet.
 
 Det er enklest å lage hele prosjektet for bruk av terminalen til å lage input
 til programmet ditt.
